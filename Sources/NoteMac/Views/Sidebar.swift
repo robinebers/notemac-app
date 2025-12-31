@@ -1,7 +1,9 @@
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct Sidebar: View {
     @Bindable var appState: AppState
+    @State private var draggedDocumentID: UUID?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -18,8 +20,20 @@ struct Sidebar: View {
                             appState.closeDocument(id: doc.id)
                         }
                     )
-                    .listRowInsets(EdgeInsets(top: 2, leading: 8, bottom: 2, trailing: 8))
+                    .listRowInsets(EdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2))
                     .listRowSeparator(.hidden)
+                    .onDrag {
+                        draggedDocumentID = doc.id
+                        return NSItemProvider(object: doc.id.uuidString as NSString)
+                    }
+                    .onDrop(
+                        of: [UTType.text],
+                        delegate: SidebarDropDelegate(
+                            targetDocument: doc,
+                            appState: appState,
+                            draggedDocumentID: $draggedDocumentID
+                        )
+                    )
                 }
             }
             .listStyle(.sidebar)
@@ -94,7 +108,7 @@ struct SidebarRow: View {
             .opacity(isHovering || document.isModified ? 1 : 0)
         }
         .padding(.vertical, 6)
-        .padding(.horizontal, 10)
+        .padding(.horizontal, 4)
         .background(
             RoundedRectangle(cornerRadius: 6)
                 .fill(isActive ? Color.accentColor.opacity(0.15) : Color.clear)
@@ -108,5 +122,36 @@ struct SidebarRow: View {
         .onHover { hovering in
             isHovering = hovering
         }
+    }
+}
+
+private struct SidebarDropDelegate: DropDelegate {
+    let targetDocument: Document
+    let appState: AppState
+    @Binding var draggedDocumentID: UUID?
+
+    func dropEntered(info: DropInfo) {
+        guard let draggedDocumentID else { return }
+        guard let fromIndex = appState.documents.firstIndex(where: { $0.id == draggedDocumentID }) else { return }
+        guard let toIndex = appState.documents.firstIndex(where: { $0.id == targetDocument.id }) else { return }
+        guard fromIndex != toIndex else { return }
+
+        withAnimation {
+            appState.moveDocuments(
+                from: IndexSet(integer: fromIndex),
+                to: toIndex > fromIndex ? toIndex + 1 : toIndex
+            )
+        }
+    }
+
+    func dropUpdated(info: DropInfo) -> DropProposal? {
+        guard draggedDocumentID != nil else { return nil }
+        return DropProposal(operation: .move)
+    }
+
+    func performDrop(info: DropInfo) -> Bool {
+        guard draggedDocumentID != nil else { return false }
+        draggedDocumentID = nil
+        return true
     }
 }

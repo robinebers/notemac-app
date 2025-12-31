@@ -183,7 +183,7 @@ private struct EditorViewRepresentable: NSViewRepresentable {
             let cursorLocation = selectedRange.location
 
             // Handle empty document or cursor at start
-            guard cursorLocation > 0 else {
+            guard cursorLocation > 0, string.length > 0 else {
                 document.cursorLine = 1
                 document.cursorColumn = 1
                 return

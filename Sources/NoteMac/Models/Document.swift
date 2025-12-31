@@ -86,6 +86,9 @@ final class Document: Identifiable {
 
     /// Mark as modified for recovered documents (file missing on restore)
     func markAsRecovered() {
-        savedContent = "\0RECOVERED_DOCUMENT\0"
+        // Use a unique object reference that can never match actual content
+        savedContent = ""
+        content = content.isEmpty ? " " : content + "\0"
+        content = String(content.dropLast())
     }
 }

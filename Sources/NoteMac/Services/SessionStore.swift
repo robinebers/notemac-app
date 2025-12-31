@@ -8,6 +8,7 @@ struct SessionData: Codable {
     let wordWrapEnabled: Bool
     let showLineNumbers: Bool
     let fontSize: CGFloat
+    let sidebarVisible: Bool?  // Optional for backwards compatibility
 }
 
 struct DocumentData: Codable {
@@ -67,7 +68,8 @@ enum SessionStore {
             activeDocumentID: appState.activeDocumentID,
             wordWrapEnabled: appState.wordWrapEnabled,
             showLineNumbers: appState.showLineNumbers,
-            fontSize: appState.fontSize
+            fontSize: appState.fontSize,
+            sidebarVisible: appState.sidebarVisible
         )
 
         // Encode and write to file
@@ -100,13 +102,12 @@ enum SessionStore {
         let fm = FileManager.default
 
         // Remove session file if it exists
-        // Use do-catch to handle race conditions where file may be removed between check and removal
-        if fm.fileExists(atPath: sessionURL.path) {
-            do {
-                try fm.removeItem(at: sessionURL)
-            } catch CocoaError.fileNoSuchFile {
-                // File was already removed, which is fine
-            }
+        do {
+            try fm.removeItem(at: sessionURL)
+        } catch CocoaError.fileNoSuchFile {
+            // File was already removed or doesn't exist, which is fine
+        } catch {
+            // Ignore other errors since we're cleaning up
         }
 
         // Remove drafts directory if it exists

@@ -49,6 +49,7 @@ final class AppState {
         appState.wordWrapEnabled = sessionData.wordWrapEnabled
         appState.showLineNumbers = sessionData.showLineNumbers
         appState.fontSize = sessionData.fontSize
+        appState.sidebarVisible = sessionData.sidebarVisible ?? true
 
         // Convert DocumentData back to Document instances
         var restoredDocuments: [Document] = []

@@ -128,9 +128,15 @@ struct MainWindow: View {
         let replacedString = currentString.replacingOccurrences(of: appState.searchText, with: appState.replaceText)
 
         if replacedString != currentString {
+            // Store cursor position before replace
+            let currentSelection = textView.selectedRange()
             // Replace the entire content
             let fullRange = NSRange(location: 0, length: (textView.string as NSString).length)
             textView.insertText(replacedString, replacementRange: fullRange)
+            // Restore cursor position if still valid
+            if currentSelection.location <= (textView.string as NSString).length {
+                textView.setSelectedRange(NSRange(location: min(currentSelection.location, (textView.string as NSString).length), length: 0))
+            }
         }
     }
 }

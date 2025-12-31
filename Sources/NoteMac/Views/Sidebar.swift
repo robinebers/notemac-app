@@ -18,7 +18,7 @@ struct Sidebar: View {
                             appState.closeDocument(id: doc.id)
                         }
                     )
-                    .listRowInsets(EdgeInsets(top: 2, leading: 8, bottom: 2, trailing: 8))
+                    .listRowInsets(EdgeInsets(top: 2, leading: 4, bottom: 2, trailing: 4))
                     .listRowSeparator(.hidden)
                 }
                 .onMove { indices, newOffset in
@@ -98,7 +98,7 @@ struct SidebarRow: View {
             .opacity(isHovering || document.isModified ? 1 : 0)
         }
         .padding(.vertical, 6)
-        .padding(.horizontal, 10)
+        .padding(.horizontal, 6)
         .background(
             RoundedRectangle(cornerRadius: 6)
                 .fill(isActive ? Color.accentColor.opacity(0.15) : Color.clear)

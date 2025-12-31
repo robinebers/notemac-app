@@ -218,6 +218,9 @@ final class AppState {
             do {
                 try FileService.save(content: doc.content, to: filePath)
                 doc.markSaved()
+                // FileService always saves as UTF-8, update metadata to match
+                doc.encoding = .utf8
+                doc.encodingName = "UTF-8"
             } catch {
                 showError(message: "Failed to save file: \(error.localizedDescription)")
             }
@@ -244,6 +247,9 @@ final class AppState {
                 try FileService.save(content: doc.content, to: url)
                 doc.filePath = url
                 doc.markSaved()
+                // FileService always saves as UTF-8, update metadata to match
+                doc.encoding = .utf8
+                doc.encodingName = "UTF-8"
             } catch {
                 self?.showError(message: "Failed to save file: \(error.localizedDescription)")
             }

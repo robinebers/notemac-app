@@ -2,7 +2,6 @@ import Foundation
 
 enum FileServiceError: Error {
     case unsupportedFileType
-    case encodingDetectionFailed
     case readFailed(Error)
     case writeFailed(Error)
 }
@@ -28,9 +27,7 @@ enum FileService {
         }
 
         // Try to detect encoding and read the file
-        guard let (content, encoding) = try? detectEncodingAndRead(from: url) else {
-            throw FileServiceError.encodingDetectionFailed
-        }
+        let (content, encoding) = try detectEncodingAndRead(from: url)
 
         let encodingName = nameForEncoding(encoding)
         let lineEnding = detectLineEnding(in: content)

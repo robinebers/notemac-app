@@ -1,0 +1,47 @@
+{
+  "": {
+    "swift-dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/master.swiftdeps"
+  },
+  "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionItem.swift": {
+    "dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionItem.d",
+    "object": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionItem.swift.o",
+    "swiftmodule": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionItem~partial.swiftmodule",
+    "swift-dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionItem.swiftdeps",
+    "diagnostics": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionItem.dia"
+  },
+  "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionViewController.swift": {
+    "dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewController.d",
+    "object": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewController.swift.o",
+    "swiftmodule": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewController~partial.swiftmodule",
+    "swift-dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewController.swiftdeps",
+    "diagnostics": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewController.dia"
+  },
+  "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionViewControllerDelegate.swift": {
+    "dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerDelegate.d",
+    "object": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerDelegate.swift.o",
+    "swiftmodule": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerDelegate~partial.swiftmodule",
+    "swift-dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerDelegate.swiftdeps",
+    "diagnostics": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerDelegate.dia"
+  },
+  "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionViewControllerProtocol.swift": {
+    "dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerProtocol.d",
+    "object": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerProtocol.swift.o",
+    "swiftmodule": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerProtocol~partial.swiftmodule",
+    "swift-dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerProtocol.swiftdeps",
+    "diagnostics": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerProtocol.dia"
+  },
+  "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/Window/STCompletionWindow.swift": {
+    "dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindow.d",
+    "object": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindow.swift.o",
+    "swiftmodule": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindow~partial.swiftmodule",
+    "swift-dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindow.swiftdeps",
+    "diagnostics": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindow.dia"
+  },
+  "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/Window/STCompletionWindowController.swift": {
+    "dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindowController.d",
+    "object": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindowController.swift.o",
+    "swiftmodule": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindowController~partial.swiftmodule",
+    "swift-dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindowController.swiftdeps",
+    "diagnostics": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindowController.dia"
+  }
+}

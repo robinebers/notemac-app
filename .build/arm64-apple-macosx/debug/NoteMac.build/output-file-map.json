@@ -1,0 +1,19 @@
+{
+  "": {
+    "swift-dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/master.swiftdeps"
+  },
+  "/Users/rebers/conductor/workspaces/notemac-app/bangalore/Sources/NoteMac/NoteMacApp.swift": {
+    "dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/NoteMacApp.d",
+    "object": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/NoteMacApp.swift.o",
+    "swiftmodule": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/NoteMacApp~partial.swiftmodule",
+    "swift-dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/NoteMacApp.swiftdeps",
+    "diagnostics": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/NoteMacApp.dia"
+  },
+  "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/DerivedSources/resource_bundle_accessor.swift": {
+    "dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/resource_bundle_accessor.d",
+    "object": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/resource_bundle_accessor.swift.o",
+    "swiftmodule": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/resource_bundle_accessor~partial.swiftmodule",
+    "swift-dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/resource_bundle_accessor.swiftdeps",
+    "diagnostics": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/resource_bundle_accessor.dia"
+  }
+}

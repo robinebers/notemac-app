@@ -1,0 +1,3232 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.xctest/Contents/MacOS/NoteMacPackageTests",
+      "packagePath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore",
+      "productName" : "NoteMacPackageTests"
+    }
+  ],
+  "copyCommands" : {
+    "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac_NoteMac.bundle/Assets.xcassets" : {
+      "inputs" : [
+        {
+          "kind" : "directory",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/Sources/NoteMac/Resources/Assets.xcassets"
+        }
+      ],
+      "outputs" : [
+        {
+          "kind" : "directory",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac_NoteMac.bundle/Assets.xcassets"
+        }
+      ]
+    }
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.NoteMac-arm64-apple-macosx26.0-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/sources",
+      "importPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/Sources/NoteMac/NoteMacApp.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/DerivedSources/resource_bundle_accessor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<NoteMac-arm64-apple-macosx26.0-debug.module-resources>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/STTextView.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/STCompletion.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/STTextViewUI.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "NoteMac",
+      "moduleOutputPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/NoteMac.swiftmodule",
+      "objects" : [
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/NoteMacApp.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/resource_bundle_accessor.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx15.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j12",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_AVAILABLE",
+        "-Xcc",
+        "-fmodule-map-file=/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include/module.modulemap",
+        "-Xcc",
+        "-I",
+        "-Xcc",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include",
+        "-module-cache-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "NoteMac_main",
+        "-swift-version",
+        "6",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "bangalore"
+      ],
+      "outputFileMapPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/NoteMacApp.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/resource_bundle_accessor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/NoteMac.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/Sources/NoteMac/NoteMacApp.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/DerivedSources/resource_bundle_accessor.swift"
+      ],
+      "tempsPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.NoteMacPackageTests-arm64-apple-macosx26.0-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/sources",
+      "importPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.derived/runner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/NoteMacTests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "NoteMacPackageTests",
+      "moduleOutputPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/NoteMacPackageTests.swiftmodule",
+      "objects" : [
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/runner.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx15.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j12",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-Xcc",
+        "-fmodule-map-file=/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include/module.modulemap",
+        "-Xcc",
+        "-I",
+        "-Xcc",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include",
+        "-module-cache-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/include/NoteMacPackageTests-Swift.h",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "bangalore"
+      ],
+      "outputFileMapPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/NoteMacPackageTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.derived/runner.swift"
+      ],
+      "tempsPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.NoteMacTests-arm64-apple-macosx26.0-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacTests.build/sources",
+      "importPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/Tests/NoteMacTests/NoteMacTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "NoteMacTests",
+      "moduleOutputPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/NoteMacTests.swiftmodule",
+      "objects" : [
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacTests.build/NoteMacTests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx15.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j12",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-Xcc",
+        "-fmodule-map-file=/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include/module.modulemap",
+        "-Xcc",
+        "-I",
+        "-Xcc",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include",
+        "-module-cache-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-swift-version",
+        "6",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "bangalore"
+      ],
+      "outputFileMapPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacTests.build/NoteMacTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/NoteMacTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/Tests/NoteMacTests/NoteMacTests.swift"
+      ],
+      "tempsPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacTests.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.STCompletion-arm64-apple-macosx26.0-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/sources",
+      "importPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionItem.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionViewController.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionViewControllerDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionViewControllerProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/Window/STCompletionWindow.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/Window/STCompletionWindowController.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "STCompletion",
+      "moduleOutputPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/STCompletion.swiftmodule",
+      "objects" : [
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionItem.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewController.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerDelegate.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerProtocol.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindow.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindowController.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx12.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j12",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/include/STCompletion-Swift.h",
+        "-swift-version",
+        "5",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-suppress-warnings"
+      ],
+      "outputFileMapPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionItem.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewController.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindow.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindowController.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/STCompletion.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionItem.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionViewController.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionViewControllerDelegate.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionViewControllerProtocol.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/Window/STCompletionWindow.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/Window/STCompletionWindowController.swift"
+      ],
+      "tempsPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.STTextKitPlus-arm64-apple-macosx26.0-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/sources",
+      "importPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSRange.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextContentManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLayoutFragment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLayoutManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLineFragment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLocation+Equatable.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextRange.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "STTextKitPlus",
+      "moduleOutputPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/STTextKitPlus.swiftmodule",
+      "objects" : [
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSRange.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextContentManager.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLayoutFragment.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLayoutManager.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLineFragment.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLocation+Equatable.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextRange.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx12.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j12",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/include/STTextKitPlus-Swift.h",
+        "-swift-version",
+        "5",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-suppress-warnings"
+      ],
+      "outputFileMapPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSRange.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextContentManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLayoutFragment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLayoutManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLineFragment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLocation+Equatable.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextRange.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/STTextKitPlus.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSRange.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextContentManager.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLayoutFragment.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLayoutManager.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLineFragment.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLocation+Equatable.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextRange.swift"
+      ],
+      "tempsPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.STTextView-arm64-apple-macosx26.0-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/sources",
+      "importPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/DragSelectedTextGestureRecognizer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/Geometric+Helpers.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSAttributedString+Helpers.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSEdgeInsets+orientation.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSResponder+debug.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSTextContentManager+Helpers.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSTextLayoutManager+Helpers.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSTextLayoutManager+InsertionPoint.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/LineNumberRulerView/STLineNumberRulerView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/LineNumberRulerView/STRulerMarker.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Logger.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/ContentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/DecorationView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/HighlightView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/SelectionView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/Plugin.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/STPlugin.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/STPluginContext.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/STPluginEvents.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STAttributedTextElement.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STInsertionPointIndicatorProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STInsertionPointView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextContainer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextContentStorage.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextFinderClient.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextLayoutFragment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextLayoutManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Capitalization.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Complete.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+CopyPaste.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Delete.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+DragGestureRecognizer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Find.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+FontPanel.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Format.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Insert.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+InsertionPoint.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Key.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Mouse.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSAccessibilityProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSColorChanging.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSDraggingDestination.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSDraggingSource.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSServicesMenuRequestor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextCheckingClient.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextInputClient.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextLayoutManagerDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextLayoutOrientationProvider.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextViewportLayoutControllerDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSUserInterfaceValidations.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Ruler.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Scrolling.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Select.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Speech.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Undo.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Yank.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextViewDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextViewDelegateProxy.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/TextLayoutFragmentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/TextLayoutRangeView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/ApproximateEquality.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/CoalescingUndoManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/LineHeight.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/NSColor+TextInsertionPoint.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/PixelAlign.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/STRulerInsets.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/YankingManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/STCompletion.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STObjCLandShim.build/STObjCLandShim.m.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/STTextKitPlus.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "STTextView",
+      "moduleOutputPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/STTextView.swiftmodule",
+      "objects" : [
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/DragSelectedTextGestureRecognizer.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/Geometric+Helpers.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSAttributedString+Helpers.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSEdgeInsets+orientation.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSResponder+debug.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSTextContentManager+Helpers.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSTextLayoutManager+Helpers.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSTextLayoutManager+InsertionPoint.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STLineNumberRulerView.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STRulerMarker.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/Logger.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/ContentView.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/DecorationView.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/HighlightView.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/SelectionView.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/Plugin.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STPlugin.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STPluginContext.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STPluginEvents.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STAttributedTextElement.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STInsertionPointIndicatorProtocol.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STInsertionPointView.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextContainer.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextContentStorage.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextFinderClient.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextLayoutFragment.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextLayoutManager.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Capitalization.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Complete.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+CopyPaste.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Delete.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+DragGestureRecognizer.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Find.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+FontPanel.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Format.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Insert.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+InsertionPoint.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Key.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Mouse.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSAccessibilityProtocol.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSColorChanging.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSDraggingDestination.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSDraggingSource.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSServicesMenuRequestor.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextCheckingClient.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextInputClient.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextLayoutManagerDelegate.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextLayoutOrientationProvider.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextViewportLayoutControllerDelegate.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSUserInterfaceValidations.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Ruler.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Scrolling.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Select.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Speech.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Undo.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Yank.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextViewDelegate.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextViewDelegateProxy.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/TextLayoutFragmentView.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/TextLayoutRangeView.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/ApproximateEquality.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/CoalescingUndoManager.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/LineHeight.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSColor+TextInsertionPoint.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/PixelAlign.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STRulerInsets.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/YankingManager.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx12.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j12",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-Xcc",
+        "-fmodule-map-file=/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include/module.modulemap",
+        "-Xcc",
+        "-I",
+        "-Xcc",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include",
+        "-module-cache-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/include/STTextView-Swift.h",
+        "-swift-version",
+        "5",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-suppress-warnings"
+      ],
+      "outputFileMapPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/DragSelectedTextGestureRecognizer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/Geometric+Helpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSAttributedString+Helpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSEdgeInsets+orientation.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSResponder+debug.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSTextContentManager+Helpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSTextLayoutManager+Helpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSTextLayoutManager+InsertionPoint.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STLineNumberRulerView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STRulerMarker.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/Logger.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/ContentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/DecorationView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/HighlightView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/SelectionView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/Plugin.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STPlugin.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STPluginContext.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STPluginEvents.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STAttributedTextElement.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STInsertionPointIndicatorProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STInsertionPointView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextContainer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextContentStorage.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextFinderClient.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextLayoutFragment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextLayoutManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Capitalization.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Complete.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+CopyPaste.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Delete.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+DragGestureRecognizer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Find.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+FontPanel.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Format.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Insert.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+InsertionPoint.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Key.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Mouse.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSAccessibilityProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSColorChanging.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSDraggingDestination.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSDraggingSource.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSServicesMenuRequestor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextCheckingClient.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextInputClient.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextLayoutManagerDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextLayoutOrientationProvider.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextViewportLayoutControllerDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSUserInterfaceValidations.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Ruler.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Scrolling.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Select.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Speech.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Undo.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Yank.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextViewDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextViewDelegateProxy.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/TextLayoutFragmentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/TextLayoutRangeView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/ApproximateEquality.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/CoalescingUndoManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/LineHeight.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSColor+TextInsertionPoint.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/PixelAlign.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STRulerInsets.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/YankingManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/STTextView.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/DragSelectedTextGestureRecognizer.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/Geometric+Helpers.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSAttributedString+Helpers.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSEdgeInsets+orientation.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSResponder+debug.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSTextContentManager+Helpers.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSTextLayoutManager+Helpers.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSTextLayoutManager+InsertionPoint.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/LineNumberRulerView/STLineNumberRulerView.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/LineNumberRulerView/STRulerMarker.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Logger.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/ContentView.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/DecorationView.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/HighlightView.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/SelectionView.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/Plugin.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/STPlugin.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/STPluginContext.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/STPluginEvents.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STAttributedTextElement.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STInsertionPointIndicatorProtocol.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STInsertionPointView.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextContainer.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextContentStorage.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextFinderClient.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextLayoutFragment.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextLayoutManager.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Capitalization.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Complete.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+CopyPaste.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Delete.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+DragGestureRecognizer.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Find.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+FontPanel.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Format.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Insert.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+InsertionPoint.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Key.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Mouse.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSAccessibilityProtocol.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSColorChanging.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSDraggingDestination.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSDraggingSource.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSServicesMenuRequestor.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextCheckingClient.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextInputClient.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextLayoutManagerDelegate.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextLayoutOrientationProvider.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextViewportLayoutControllerDelegate.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSUserInterfaceValidations.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Ruler.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Scrolling.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Select.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Speech.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Undo.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Yank.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextViewDelegate.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextViewDelegateProxy.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/TextLayoutFragmentView.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/TextLayoutRangeView.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/ApproximateEquality.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/CoalescingUndoManager.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/LineHeight.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/NSColor+TextInsertionPoint.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/PixelAlign.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/STRulerInsets.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/YankingManager.swift"
+      ],
+      "tempsPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.STTextViewUI-arm64-apple-macosx26.0-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/sources",
+      "importPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextViewUI/EnvironmentKey.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextViewUI/TextView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextViewUI/TextViewModifier.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/STTextView.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "STTextViewUI",
+      "moduleOutputPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/STTextViewUI.swiftmodule",
+      "objects" : [
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/EnvironmentKey.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/TextView.swift.o",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/TextViewModifier.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx12.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j12",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-Xcc",
+        "-fmodule-map-file=/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include/module.modulemap",
+        "-Xcc",
+        "-I",
+        "-Xcc",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include",
+        "-module-cache-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/include/STTextViewUI-Swift.h",
+        "-swift-version",
+        "5",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-suppress-warnings"
+      ],
+      "outputFileMapPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/EnvironmentKey.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/TextView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/TextViewModifier.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules/STTextViewUI.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextViewUI/EnvironmentKey.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextViewUI/TextView.swift",
+        "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextViewUI/TextViewModifier.swift"
+      ],
+      "tempsPath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "NoteMac" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "NoteMac",
+      "-package-name",
+      "bangalore",
+      "-c",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/Sources/NoteMac/NoteMacApp.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/DerivedSources/resource_bundle_accessor.swift",
+      "-I",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx15.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j12",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_AVAILABLE",
+      "-Xcc",
+      "-fmodule-map-file=/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include/module.modulemap",
+      "-Xcc",
+      "-I",
+      "-Xcc",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include",
+      "-module-cache-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "NoteMac_main",
+      "-swift-version",
+      "6",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "bangalore",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ],
+    "NoteMacPackageTests" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "NoteMacPackageTests",
+      "-package-name",
+      "bangalore",
+      "-c",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.derived/runner.swift",
+      "-I",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx15.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j12",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-Xcc",
+      "-fmodule-map-file=/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include/module.modulemap",
+      "-Xcc",
+      "-I",
+      "-Xcc",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include",
+      "-module-cache-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/include/NoteMacPackageTests-Swift.h",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "bangalore",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ],
+    "NoteMacTests" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "NoteMacTests",
+      "-package-name",
+      "bangalore",
+      "-c",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/Tests/NoteMacTests/NoteMacTests.swift",
+      "-I",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx15.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j12",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-Xcc",
+      "-fmodule-map-file=/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include/module.modulemap",
+      "-Xcc",
+      "-I",
+      "-Xcc",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include",
+      "-module-cache-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-swift-version",
+      "6",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "bangalore",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ],
+    "STCompletion" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "STCompletion",
+      "-c",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionItem.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionViewController.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionViewControllerDelegate.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionViewControllerProtocol.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/Window/STCompletionWindow.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/Window/STCompletionWindowController.swift",
+      "-I",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx12.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j12",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/include/STCompletion-Swift.h",
+      "-swift-version",
+      "5",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-suppress-warnings",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ],
+    "STTextKitPlus" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "STTextKitPlus",
+      "-c",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSRange.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextContentManager.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLayoutFragment.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLayoutManager.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLineFragment.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLocation+Equatable.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextRange.swift",
+      "-I",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx12.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j12",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/include/STTextKitPlus-Swift.h",
+      "-swift-version",
+      "5",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-suppress-warnings",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ],
+    "STTextView" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "STTextView",
+      "-c",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/DragSelectedTextGestureRecognizer.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/Geometric+Helpers.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSAttributedString+Helpers.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSEdgeInsets+orientation.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSResponder+debug.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSTextContentManager+Helpers.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSTextLayoutManager+Helpers.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSTextLayoutManager+InsertionPoint.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/LineNumberRulerView/STLineNumberRulerView.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/LineNumberRulerView/STRulerMarker.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Logger.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/ContentView.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/DecorationView.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/HighlightView.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/SelectionView.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/Plugin.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/STPlugin.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/STPluginContext.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/STPluginEvents.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STAttributedTextElement.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STInsertionPointIndicatorProtocol.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STInsertionPointView.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextContainer.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextContentStorage.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextFinderClient.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextLayoutFragment.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextLayoutManager.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Capitalization.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Complete.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+CopyPaste.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Delete.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+DragGestureRecognizer.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Find.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+FontPanel.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Format.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Insert.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+InsertionPoint.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Key.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Mouse.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSAccessibilityProtocol.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSColorChanging.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSDraggingDestination.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSDraggingSource.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSServicesMenuRequestor.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextCheckingClient.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextInputClient.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextLayoutManagerDelegate.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextLayoutOrientationProvider.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextViewportLayoutControllerDelegate.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSUserInterfaceValidations.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Ruler.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Scrolling.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Select.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Speech.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Undo.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Yank.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextViewDelegate.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextViewDelegateProxy.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/TextLayoutFragmentView.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/TextLayoutRangeView.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/ApproximateEquality.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/CoalescingUndoManager.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/LineHeight.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/NSColor+TextInsertionPoint.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/PixelAlign.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/STRulerInsets.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/YankingManager.swift",
+      "-I",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx12.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j12",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-Xcc",
+      "-fmodule-map-file=/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include/module.modulemap",
+      "-Xcc",
+      "-I",
+      "-Xcc",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include",
+      "-module-cache-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/include/STTextView-Swift.h",
+      "-swift-version",
+      "5",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-suppress-warnings",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ],
+    "STTextViewUI" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "STTextViewUI",
+      "-c",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextViewUI/EnvironmentKey.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextViewUI/TextView.swift",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextViewUI/TextViewModifier.swift",
+      "-I",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx12.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j12",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-Xcc",
+      "-fmodule-map-file=/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include/module.modulemap",
+      "-Xcc",
+      "-I",
+      "-Xcc",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STObjCLandShim/include",
+      "-module-cache-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/include/STTextViewUI-Swift.h",
+      "-swift-version",
+      "5",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-suppress-warnings",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "NoteMac" : [
+      "STTextViewUI",
+      "STTextView",
+      "STTextKitPlus",
+      "STObjCLandShim",
+      "STCompletion"
+    ],
+    "NoteMacPackageTests" : [
+      "NoteMacTests",
+      "NoteMac",
+      "STTextViewUI",
+      "STTextView",
+      "STTextKitPlus",
+      "STObjCLandShim",
+      "STCompletion"
+    ],
+    "NoteMacTests" : [
+      "NoteMac",
+      "STTextViewUI",
+      "STTextView",
+      "STTextKitPlus",
+      "STObjCLandShim",
+      "STCompletion"
+    ],
+    "STCompletion" : [
+
+    ],
+    "STObjCLandShim" : [
+
+    ],
+    "STTextKitPlus" : [
+
+    ],
+    "STTextView" : [
+      "STTextKitPlus",
+      "STObjCLandShim",
+      "STCompletion"
+    ],
+    "STTextViewUI" : [
+      "STTextView",
+      "STTextKitPlus",
+      "STObjCLandShim",
+      "STCompletion"
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+    "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.derived/runner.swift" : {
+      "inputs" : [
+
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.derived/runner.swift"
+        }
+      ]
+    }
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac-entitlement.plist" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<entitlement-plist>"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<com.apple.security.get-task-allow>"
+        }
+      ],
+      "outputFilePath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac-entitlement.plist"
+    },
+    "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/Sources/NoteMac/NoteMacApp.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/DerivedSources/resource_bundle_accessor.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/sources"
+    },
+    "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/NoteMacApp.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/resource_bundle_accessor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionItem.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewController.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindow.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindowController.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STObjCLandShim.build/STObjCLandShim.m.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSRange.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextContentManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLayoutFragment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLayoutManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLineFragment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLocation+Equatable.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextRange.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/ApproximateEquality.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/CoalescingUndoManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/ContentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/DecorationView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/DragSelectedTextGestureRecognizer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/Geometric+Helpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/HighlightView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/LineHeight.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/Logger.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSAttributedString+Helpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSColor+TextInsertionPoint.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSEdgeInsets+orientation.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSResponder+debug.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSTextContentManager+Helpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSTextLayoutManager+Helpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSTextLayoutManager+InsertionPoint.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/PixelAlign.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/Plugin.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STAttributedTextElement.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STInsertionPointIndicatorProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STInsertionPointView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STLineNumberRulerView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STPlugin.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STPluginContext.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STPluginEvents.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STRulerInsets.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STRulerMarker.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextContainer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextContentStorage.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextFinderClient.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextLayoutFragment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextLayoutManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Capitalization.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Complete.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+CopyPaste.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Delete.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+DragGestureRecognizer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Find.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+FontPanel.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Format.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Insert.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+InsertionPoint.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Key.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Mouse.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSAccessibilityProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSColorChanging.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSDraggingDestination.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSDraggingSource.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSServicesMenuRequestor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextCheckingClient.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextInputClient.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextLayoutManagerDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextLayoutOrientationProvider.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextViewportLayoutControllerDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSUserInterfaceValidations.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Ruler.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Scrolling.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Select.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Speech.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Undo.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Yank.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextViewDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextViewDelegateProxy.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/SelectionView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/TextLayoutFragmentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/TextLayoutRangeView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/YankingManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/EnvironmentKey.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/TextView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/TextViewModifier.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.product/Objects.LinkFileList"
+    },
+    "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.derived/runner.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/sources"
+    },
+    "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/NoteMacApp.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMac.build/resource_bundle_accessor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacTests.build/NoteMacTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionItem.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewController.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionViewControllerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindow.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/STCompletionWindowController.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STObjCLandShim.build/STObjCLandShim.m.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSRange.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextContentManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLayoutFragment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLayoutManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLineFragment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextLocation+Equatable.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/NSTextRange.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/ApproximateEquality.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/CoalescingUndoManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/ContentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/DecorationView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/DragSelectedTextGestureRecognizer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/Geometric+Helpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/HighlightView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/LineHeight.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/Logger.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSAttributedString+Helpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSColor+TextInsertionPoint.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSEdgeInsets+orientation.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSResponder+debug.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSTextContentManager+Helpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSTextLayoutManager+Helpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/NSTextLayoutManager+InsertionPoint.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/PixelAlign.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/Plugin.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STAttributedTextElement.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STInsertionPointIndicatorProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STInsertionPointView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STLineNumberRulerView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STPlugin.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STPluginContext.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STPluginEvents.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STRulerInsets.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STRulerMarker.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextContainer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextContentStorage.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextFinderClient.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextLayoutFragment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextLayoutManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Capitalization.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Complete.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+CopyPaste.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Delete.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+DragGestureRecognizer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Find.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+FontPanel.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Format.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Insert.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+InsertionPoint.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Key.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Mouse.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSAccessibilityProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSColorChanging.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSDraggingDestination.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSDraggingSource.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSServicesMenuRequestor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextCheckingClient.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextInputClient.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextLayoutManagerDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextLayoutOrientationProvider.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSTextViewportLayoutControllerDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+NSUserInterfaceValidations.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Ruler.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Scrolling.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Select.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Speech.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Undo.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView+Yank.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextViewDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/STTextViewDelegateProxy.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/SelectionView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/TextLayoutFragmentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/TextLayoutRangeView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/YankingManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/EnvironmentKey.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/TextView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/TextViewModifier.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.product/Objects.LinkFileList"
+    },
+    "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/Tests/NoteMacTests/NoteMacTests.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacTests.build/sources"
+    },
+    "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionItem.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionViewController.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionViewControllerDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/STCompletionViewControllerProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/Window/STCompletionWindow.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STCompletion/Window/STCompletionWindowController.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STCompletion.build/sources"
+    },
+    "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSRange.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextContentManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLayoutFragment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLayoutManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLineFragment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextLocation+Equatable.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextKitPlus/Sources/STTextKitPlus/NSTextRange.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextKitPlus.build/sources"
+    },
+    "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/DragSelectedTextGestureRecognizer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/Geometric+Helpers.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSAttributedString+Helpers.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSEdgeInsets+orientation.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSResponder+debug.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSTextContentManager+Helpers.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSTextLayoutManager+Helpers.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Extensions/NSTextLayoutManager+InsertionPoint.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/LineNumberRulerView/STLineNumberRulerView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/LineNumberRulerView/STRulerMarker.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Logger.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/ContentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/DecorationView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/HighlightView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Overlays/SelectionView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/Plugin.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/STPlugin.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/STPluginContext.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Plugin/STPluginEvents.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STAttributedTextElement.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STInsertionPointIndicatorProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STInsertionPointView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextContainer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextContentStorage.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextFinderClient.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextLayoutFragment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextLayoutManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Capitalization.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Complete.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+CopyPaste.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Delete.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+DragGestureRecognizer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Find.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+FontPanel.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Format.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Insert.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+InsertionPoint.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Key.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Mouse.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSAccessibilityProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSColorChanging.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSDraggingDestination.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSDraggingSource.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSServicesMenuRequestor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextCheckingClient.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextInputClient.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextLayoutManagerDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextLayoutOrientationProvider.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSTextViewportLayoutControllerDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+NSUserInterfaceValidations.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Ruler.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Scrolling.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Select.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Speech.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Undo.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView+Yank.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextViewDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/STTextViewDelegateProxy.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/TextLayoutFragmentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/TextLayoutRangeView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/ApproximateEquality.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/CoalescingUndoManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/LineHeight.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/NSColor+TextInsertionPoint.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/PixelAlign.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/Utility/STRulerInsets.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextView/YankingManager.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextView.build/sources"
+    },
+    "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextViewUI/EnvironmentKey.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextViewUI/TextView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/checkouts/STTextView/Sources/STTextViewUI/TextViewModifier.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/STTextViewUI.build/sources"
+    },
+    "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "object" : {
+    "artifacts" : [
+
+    ],
+    "dependencies" : [
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "sttextkitplus",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/krzyzanowskim/STTextKitPlus",
+          "name" : "STTextKitPlus"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "f5fb3c024f233bc8b14237a10a99bbc9c966c4dc",
+            "version" : "0.2.0"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "STTextKitPlus"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "sttextview",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/krzyzanowskim/STTextView",
+          "name" : "STTextView"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "8c4b880259f122c5ff4283adc698ac0d5d4b9027",
+            "version" : "0.9.6"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "STTextView"
+      }
+    ],
+    "prebuilts" : [
+
+    ]
+  },
+  "version" : 7
+}

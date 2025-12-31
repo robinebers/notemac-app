@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/master.swiftdeps"
+  },
+  "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.derived/runner.swift": {
+    "dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/runner.d",
+    "object": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/runner.swift.o",
+    "swiftmodule": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/runner~partial.swiftmodule",
+    "swift-dependencies": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/runner.swiftdeps",
+    "diagnostics": "/Users/rebers/conductor/workspaces/notemac-app/bangalore/.build/arm64-apple-macosx/debug/NoteMacPackageTests.build/runner.dia"
+  }
+}

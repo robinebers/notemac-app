@@ -1,0 +1,24 @@
+{
+  "originHash" : "a7c9ff490f29a83f4002cb0deb90a12e9bc36c9cade43d4bf2217e43cf834c3e",
+  "pins" : [
+    {
+      "identity" : "sttextkitplus",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/STTextKitPlus",
+      "state" : {
+        "revision" : "f5fb3c024f233bc8b14237a10a99bbc9c966c4dc",
+        "version" : "0.2.0"
+      }
+    },
+    {
+      "identity" : "sttextview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/STTextView",
+      "state" : {
+        "revision" : "8c4b880259f122c5ff4283adc698ac0d5d4b9027",
+        "version" : "0.9.6"
+      }
+    }
+  ],
+  "version" : 3
+}

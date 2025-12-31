@@ -22,6 +22,7 @@ struct AppStateTests {
     }
 
     @Test("Can close document")
+    @MainActor
     func closesDocument() {
         let state = AppState()
         state.newDocument()
@@ -33,6 +34,7 @@ struct AppStateTests {
     }
 
     @Test("Cannot close last document - creates new one")
+    @MainActor
     func cannotCloseLastDocument() {
         let state = AppState()
         let onlyDoc = state.documents.first!

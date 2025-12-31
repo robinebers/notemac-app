@@ -254,7 +254,8 @@ struct SessionRestorationTests {
             activeDocumentID: nil,
             wordWrapEnabled: true,
             showLineNumbers: false,
-            fontSize: 12
+            fontSize: 12,
+            sidebarVisible: true
         )
 
         let restoredState = AppState.restore(from: sessionData)
@@ -325,7 +326,8 @@ struct SessionRestorationTests {
             activeDocumentID: UUID(), // Invalid ID that doesn't match any document
             wordWrapEnabled: true,
             showLineNumbers: false,
-            fontSize: 13
+            fontSize: 13,
+            sidebarVisible: true
         )
 
         let restoredState = AppState.restore(from: sessionData)

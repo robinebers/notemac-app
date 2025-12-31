@@ -158,9 +158,15 @@ private struct EditorViewRepresentable: NSViewRepresentable {
                 return
             }
 
+            // Set flag synchronously to prevent race condition with updateNSView
+            // If we set this inside the Task, updateNSView could run first and
+            // reset the text view to old content, losing user input
+            MainActor.assumeIsolated {
+                self.isDidChangeText = true
+            }
+
             Task { @MainActor [weak self] in
                 guard let self, !self.isUpdating else { return }
-                self.isDidChangeText = true
                 self.document.content = textView.string
             }
         }

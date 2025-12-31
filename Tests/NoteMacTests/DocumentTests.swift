@@ -40,4 +40,33 @@ struct DocumentTests {
         mdDoc.filePath = URL(fileURLWithPath: "/test.md")
         #expect(mdDoc.isMarkdown == true)
     }
+
+    @Test("markAsRecovered marks document as modified")
+    func markAsRecoveredWorks() {
+        // Test with non-empty content
+        let doc = Document(content: "Hello")
+        doc.markSaved()
+        #expect(doc.isModified == false)
+        doc.markAsRecovered()
+        #expect(doc.isModified == true)
+    }
+
+    @Test("markAsRecovered works with empty content")
+    func markAsRecoveredWorksWithEmptyContent() {
+        // Test with empty content - previously this would fail
+        let doc = Document(content: "")
+        doc.markSaved()
+        #expect(doc.isModified == false)
+        doc.markAsRecovered()
+        #expect(doc.isModified == true)
+    }
+
+    @Test("markSaved clears recovered state")
+    func markSavedClearsRecoveredState() {
+        let doc = Document(content: "Hello")
+        doc.markAsRecovered()
+        #expect(doc.isModified == true)
+        doc.markSaved()
+        #expect(doc.isModified == false)
+    }
 }

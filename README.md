@@ -1,8 +1,8 @@
 # NoteMac
 
-![NoteMac Screenshot](notemac.png)
+A simple, fast text editor for macOS built with SwiftUI with basic Markdown support. Purely a vibe coded experiment for testing purposes.
 
-A simple, fast text editor for macOS built with SwiftUI.
+![NoteMac Screenshot](notemac.png)
 
 ## Releases
 

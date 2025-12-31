@@ -158,6 +158,10 @@ private struct EditorViewRepresentable: NSViewRepresentable {
                 return
             }
 
+            // STTextView delegates are always called on main thread, but verify for safety
+            // since MainActor.assumeIsolated would crash if called off main thread
+            dispatchPrecondition(condition: .onQueue(.main))
+
             // Set flag synchronously to prevent race condition with updateNSView
             // If we set this inside the Task, updateNSView could run first and
             // reset the text view to old content, losing user input

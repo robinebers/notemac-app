@@ -25,7 +25,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
            !frameString.isEmpty {
             let savedFrame = NSRectFromString(frameString)
             if savedFrame.width > 0 && savedFrame.height > 0 {
-                window.setFrame(savedFrame, display: false)
+                // Validate frame is visible on at least one current screen
+                // (handles case where external monitor was disconnected)
+                let isVisible = NSScreen.screens.contains { screen in
+                    screen.visibleFrame.intersects(savedFrame)
+                }
+                if isVisible {
+                    window.setFrame(savedFrame, display: false)
+                } else {
+                    // Saved frame is off-screen (monitor disconnected), center instead
+                    window.center()
+                }
             }
         }
 

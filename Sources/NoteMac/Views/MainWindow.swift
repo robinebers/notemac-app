@@ -16,13 +16,31 @@ private func saveWindowFrame(_ window: NSWindow) {
 
 /// NSViewRepresentable that saves window position on move/resize
 private struct WindowPositionSaver: NSViewRepresentable {
+    func makeCoordinator() -> Coordinator {
+        Coordinator()
+    }
+
     func makeNSView(context: Context) -> NSView {
         let view = NSView()
         DispatchQueue.main.async {
             guard let window = view.window else { return }
+            context.coordinator.setupObservers(for: window)
+        }
+        return view
+    }
 
-            // Observe window move/resize notifications to save frame
-            NotificationCenter.default.addObserver(
+    func updateNSView(_ nsView: NSView, context: Context) {}
+
+    /// Coordinator to manage observer lifecycle and prevent memory leaks
+    class Coordinator {
+        private var moveObserver: NSObjectProtocol?
+        private var resizeObserver: NSObjectProtocol?
+
+        func setupObservers(for window: NSWindow) {
+            // Only set up once
+            guard moveObserver == nil else { return }
+
+            moveObserver = NotificationCenter.default.addObserver(
                 forName: NSWindow.didMoveNotification,
                 object: window,
                 queue: .main
@@ -33,7 +51,7 @@ private struct WindowPositionSaver: NSViewRepresentable {
                 }
             }
 
-            NotificationCenter.default.addObserver(
+            resizeObserver = NotificationCenter.default.addObserver(
                 forName: NSWindow.didResizeNotification,
                 object: window,
                 queue: .main
@@ -44,10 +62,16 @@ private struct WindowPositionSaver: NSViewRepresentable {
                 }
             }
         }
-        return view
-    }
 
-    func updateNSView(_ nsView: NSView, context: Context) {}
+        deinit {
+            if let observer = moveObserver {
+                NotificationCenter.default.removeObserver(observer)
+            }
+            if let observer = resizeObserver {
+                NotificationCenter.default.removeObserver(observer)
+            }
+        }
+    }
 }
 
 // MARK: - Main Window View

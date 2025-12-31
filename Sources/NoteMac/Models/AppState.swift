@@ -125,8 +125,8 @@ final class AppState {
                 createdAt: data.createdAt,
                 lastModifiedAt: data.lastModifiedAt
             )
-            // Mark as modified since file is missing and content may be stale
-            doc.markModified()
+            // Mark as recovered since file is missing and content may be stale
+            doc.markAsRecovered()
             return doc
         }
 

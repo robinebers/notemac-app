@@ -5,56 +5,60 @@ import STTextView
 struct MainWindow: View {
     @Bindable var appState: AppState
     @State private var textView: STTextView?
+    @State private var columnVisibility: NavigationSplitViewVisibility = .all
 
     var body: some View {
-        VStack(spacing: 0) {
-            // Tab bar with liquid glass effect
-            TabBar(appState: appState)
+        NavigationSplitView(columnVisibility: $columnVisibility) {
+            // Sidebar (left column) - Finder-style document list
+            Sidebar(appState: appState)
+                .navigationSplitViewColumnWidth(min: 180, ideal: 220, max: 300)
+        } detail: {
+            // Main content area (right column)
+            VStack(spacing: 0) {
+                // Find bar (conditionally visible)
+                if appState.findBarVisible {
+                    FindBar(
+                        isVisible: $appState.findBarVisible,
+                        searchText: $appState.searchText,
+                        replaceText: $appState.replaceText,
+                        showReplace: $appState.showReplaceField,
+                        onFindNext: { performFind(next: true) },
+                        onFindPrevious: { performFind(next: false) },
+                        onReplace: { performReplace() },
+                        onReplaceAll: { performReplaceAll() }
+                    )
+                }
 
-            // Find bar (conditionally visible)
-            if appState.findBarVisible {
-                FindBar(
-                    isVisible: $appState.findBarVisible,
-                    searchText: $appState.searchText,
-                    replaceText: $appState.replaceText,
-                    showReplace: $appState.showReplaceField,
-                    onFindNext: { performFind(next: true) },
-                    onFindPrevious: { performFind(next: false) },
-                    onReplace: { performReplace() },
-                    onReplaceAll: { performReplaceAll() }
-                )
-            }
-
-            // Editor area - solid content for readability
-            if let activeDoc = appState.activeDocument {
-                EditorView(
-                    document: activeDoc,
-                    fontSize: appState.fontSize,
-                    wordWrap: appState.wordWrapEnabled,
-                    showLineNumbers: appState.showLineNumbers,
-                    onTextViewReady: { view in
-                        textView = view
-                    }
-                )
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else {
-                // Fallback for no active document (should not happen)
-                Text("No document available")
-                    .foregroundStyle(.secondary)
+                // Editor area
+                if let activeDoc = appState.activeDocument {
+                    EditorView(
+                        document: activeDoc,
+                        fontSize: appState.fontSize,
+                        wordWrap: appState.wordWrapEnabled,
+                        showLineNumbers: appState.showLineNumbers,
+                        onTextViewReady: { view in
+                            textView = view
+                        }
+                    )
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-            }
+                } else {
+                    Text("No document available")
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
 
-            // Status bar
-            StatusBar(
-                line: appState.activeDocument?.cursorLine ?? 1,
-                column: appState.activeDocument?.cursorColumn ?? 1,
-                encoding: appState.activeDocument?.encodingName ?? "UTF-8",
-                lineEnding: appState.activeDocument?.lineEnding.displayName ?? "LF",
-                documentType: appState.activeDocument?.isMarkdown == true ? "Markdown" : "Plain Text"
-            )
+                // Status bar
+                StatusBar(
+                    line: appState.activeDocument?.cursorLine ?? 1,
+                    column: appState.activeDocument?.cursorColumn ?? 1,
+                    encoding: appState.activeDocument?.encodingName ?? "UTF-8",
+                    lineEnding: appState.activeDocument?.lineEnding.displayName ?? "LF",
+                    documentType: appState.activeDocument?.isMarkdown == true ? "Markdown" : "Plain Text"
+                )
+            }
         }
+        .navigationSplitViewStyle(.balanced)
         .onAppear {
-            // Set up find action closures
             appState.findNextAction = { performFind(next: true) }
             appState.findPreviousAction = { performFind(next: false) }
         }

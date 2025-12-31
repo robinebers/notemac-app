@@ -1,7 +1,9 @@
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct Sidebar: View {
     @Bindable var appState: AppState
+    @State private var draggedDocumentID: UUID?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -18,15 +20,23 @@ struct Sidebar: View {
                             appState.closeDocument(id: doc.id)
                         }
                     )
-                    .listRowInsets(EdgeInsets(top: 2, leading: 4, bottom: 2, trailing: 4))
+                    .listRowInsets(EdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2))
                     .listRowSeparator(.hidden)
-                }
-                .onMove { indices, newOffset in
-                    appState.moveDocuments(from: indices, to: newOffset)
+                    .onDrag {
+                        draggedDocumentID = doc.id
+                        return NSItemProvider(object: doc.id.uuidString as NSString)
+                    }
+                    .onDrop(
+                        of: [UTType.text],
+                        delegate: SidebarDropDelegate(
+                            targetDocument: doc,
+                            documents: $appState.documents,
+                            draggedDocumentID: $draggedDocumentID
+                        )
+                    )
                 }
             }
             .listStyle(.sidebar)
-            .environment(\.editMode, .constant(.active))
 
             Divider()
 
@@ -98,7 +108,7 @@ struct SidebarRow: View {
             .opacity(isHovering || document.isModified ? 1 : 0)
         }
         .padding(.vertical, 6)
-        .padding(.horizontal, 6)
+        .padding(.horizontal, 4)
         .background(
             RoundedRectangle(cornerRadius: 6)
                 .fill(isActive ? Color.accentColor.opacity(0.15) : Color.clear)
@@ -112,5 +122,34 @@ struct SidebarRow: View {
         .onHover { hovering in
             isHovering = hovering
         }
+    }
+}
+
+private struct SidebarDropDelegate: DropDelegate {
+    let targetDocument: Document
+    @Binding var documents: [Document]
+    @Binding var draggedDocumentID: UUID?
+
+    func dropEntered(info: DropInfo) {
+        guard let draggedDocumentID else { return }
+        guard let fromIndex = documents.firstIndex(where: { $0.id == draggedDocumentID }) else { return }
+        guard let toIndex = documents.firstIndex(where: { $0.id == targetDocument.id }) else { return }
+        guard fromIndex != toIndex else { return }
+
+        withAnimation {
+            documents.move(
+                fromOffsets: IndexSet(integer: fromIndex),
+                toOffset: toIndex > fromIndex ? toIndex + 1 : toIndex
+            )
+        }
+    }
+
+    func dropUpdated(info: DropInfo) -> DropProposal? {
+        DropProposal(operation: .move)
+    }
+
+    func performDrop(info: DropInfo) -> Bool {
+        draggedDocumentID = nil
+        return true
     }
 }

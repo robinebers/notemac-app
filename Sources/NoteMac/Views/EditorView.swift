@@ -101,12 +101,12 @@ private struct EditorViewRepresentable: NSViewRepresentable {
             // Clear markdown styles when switching from markdown to non-markdown
             if wasEnabled && !document.isMarkdown {
                 let baseFont = NSFont.monospacedSystemFont(ofSize: fontSize, weight: .regular)
+                let baseAttrs: [NSAttributedString.Key: Any] = [.font: baseFont, .foregroundColor: NSColor.labelColor]
+                // Reset typingAttributes so new text uses base style (even if document is empty)
+                textView.typingAttributes = baseAttrs
                 let textLength = (textView.string as NSString).length
                 if textLength > 0 {
-                    textView.setAttributes([
-                        .font: baseFont,
-                        .foregroundColor: NSColor.labelColor
-                    ], range: NSRange(location: 0, length: textLength))
+                    textView.setAttributes(baseAttrs, range: NSRange(location: 0, length: textLength))
                 }
             }
         } else if document.isMarkdown {

@@ -349,9 +349,12 @@ struct MarkdownStyler {
     @MainActor
     static func apply(to textView: STTextView, baseFont: NSFont?) {
         let content = textView.string
-        guard !content.isEmpty else { return }
-
         let font = baseFont ?? NSFont.monospacedSystemFont(ofSize: 13, weight: .regular)
+
+        // Always reset typingAttributes so new text uses base style (even if content is empty)
+        textView.typingAttributes = [.font: font, .foregroundColor: NSColor.labelColor]
+
+        guard !content.isEmpty else { return }
         let textLength = (content as NSString).length
         let fullRange = NSRange(location: 0, length: textLength)
 

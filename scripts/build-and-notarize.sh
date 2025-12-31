@@ -57,14 +57,14 @@ cp ".build/release/$APP_NAME" "$APP_BUNDLE/Contents/MacOS/"
 cp "$PROJECT_DIR/Info.plist" "$APP_BUNDLE/Contents/"
 
 # Copy resources (app icon)
-if [ -d "Sources/$APP_NAME/Resources/Assets.xcassets" ]; then
-    # Compile asset catalog
-    xcrun actool "Sources/$APP_NAME/Resources/Assets.xcassets" \
-        --compile "$APP_BUNDLE/Contents/Resources" \
-        --platform macosx \
-        --minimum-deployment-target 15.0 \
-        --app-icon AppIcon \
-        --output-partial-info-plist "$BUILD_DIR/AssetCatalog.plist" 2>/dev/null || true
+# Copy Assets.car for macOS Tahoe Liquid Glass icons (dark/light/tinted variants)
+if [ -f "$PROJECT_DIR/Resources/Assets.car" ]; then
+    cp "$PROJECT_DIR/Resources/Assets.car" "$APP_BUNDLE/Contents/Resources/"
+fi
+
+# Also copy icns for backward compatibility with older macOS versions
+if [ -f "$PROJECT_DIR/Resources/AppIcon.icns" ]; then
+    cp "$PROJECT_DIR/Resources/AppIcon.icns" "$APP_BUNDLE/Contents/Resources/"
 fi
 
 # Copy any other resources from the bundle

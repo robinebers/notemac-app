@@ -11,13 +11,15 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/krzyzanowskim/STTextView", from: "0.9.0"),
+        .package(url: "https://github.com/apple/swift-markdown", from: "0.4.0"),
         .package(url: "https://github.com/apple/swift-testing.git", from: "0.10.0")
     ],
     targets: [
         .executableTarget(
             name: "NoteMac",
             dependencies: [
-                .product(name: "STTextView", package: "STTextView")
+                .product(name: "STTextView", package: "STTextView"),
+                .product(name: "Markdown", package: "swift-markdown")
             ],
             path: "Sources/NoteMac",
             resources: [

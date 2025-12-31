@@ -145,10 +145,12 @@ private struct SidebarDropDelegate: DropDelegate {
     }
 
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        DropProposal(operation: .move)
+        guard draggedDocumentID != nil else { return nil }
+        return DropProposal(operation: .move)
     }
 
     func performDrop(info: DropInfo) -> Bool {
+        guard draggedDocumentID != nil else { return false }
         draggedDocumentID = nil
         return true
     }

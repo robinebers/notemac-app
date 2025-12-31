@@ -209,14 +209,15 @@ struct MarkdownRangeCollector: MarkupWalker {
 
         // Dim > characters at the start of each line using UTF-16 offsets
         let text = (source as NSString).substring(with: nsRange)
+        let lines = text.split(separator: "\n", omittingEmptySubsequences: false)
         var lineStartUTF16 = 0
-        for line in text.split(separator: "\n", omittingEmptySubsequences: false) {
+        for (index, line) in lines.enumerated() {
             if line.hasPrefix(">") {
                 let markerRange = NSRange(location: nsRange.location + lineStartUTF16, length: 1)
                 ranges.append(StyledRange(range: markerRange, style: .syntax))
             }
-            // Count UTF-16 code units for this line plus newline
-            lineStartUTF16 += line.utf16.count + 1
+            // Count UTF-16 code units for this line, plus newline only if not the last line
+            lineStartUTF16 += line.utf16.count + (index < lines.count - 1 ? 1 : 0)
         }
 
         descendInto(blockQuote)

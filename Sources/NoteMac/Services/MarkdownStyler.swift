@@ -236,30 +236,32 @@ struct MarkdownRangeCollector: MarkupWalker {
     // MARK: - Helpers
 
     private func nsRange(from sourceRange: SourceRange) -> NSRange {
-        let startOffset = offset(for: sourceRange.lowerBound)
-        let endOffset = offset(for: sourceRange.upperBound)
+        let startOffset = utf16Offset(for: sourceRange.lowerBound)
+        let endOffset = utf16Offset(for: sourceRange.upperBound)
         return NSRange(location: startOffset, length: endOffset - startOffset)
     }
 
-    private func offset(for location: SourceLocation) -> Int {
-        var offset = 0
+    /// Convert a SourceLocation (line/column in Unicode scalars) to UTF-16 offset for NSRange
+    private func utf16Offset(for location: SourceLocation) -> Int {
+        var utf16Offset = 0
         var line = 1
-        var column = 1
+        var column = 1  // swift-markdown uses 1-based Unicode scalar columns
 
-        for char in source {
+        for scalar in source.unicodeScalars {
             if line == location.line && column == location.column {
-                return offset
+                return utf16Offset
             }
-            if char == "\n" {
+            if scalar == "\n" {
                 line += 1
                 column = 1
             } else {
                 column += 1
             }
-            offset += 1
+            // NSString/NSRange uses UTF-16, so count UTF-16 code units
+            utf16Offset += scalar.utf16.count
         }
 
-        return offset
+        return utf16Offset
     }
 }
 
@@ -269,28 +271,33 @@ struct MarkdownRangeCollector: MarkupWalker {
 /// Uses the plugin event system to properly handle real-time styling without disrupting typing.
 @MainActor
 final class MarkdownStylingPlugin: STPlugin {
-    private let baseFont: NSFont
+    private let initialFont: NSFont
     private var isApplyingStyles = false
 
+    /// Set to false when switching to a non-markdown document to disable styling
+    var isEnabled: Bool = true
+
     init(baseFont: NSFont) {
-        self.baseFont = baseFont
+        self.initialFont = baseFont
     }
 
     func setUp(context: any Context) {
         let textView = context.textView
-        let font = self.baseFont
+        let initialFont = self.initialFont
 
         // Register for text change events - this is called after text is changed
         context.events.onDidChangeText { [weak self] _, _ in
-            guard let self, !self.isApplyingStyles else { return }
+            guard let self, self.isEnabled, !self.isApplyingStyles else { return }
             self.isApplyingStyles = true
-            MarkdownStyler.apply(to: textView, baseFont: font)
+            // Use current typing font to preserve user's font size changes (CMD+/CMD-)
+            let currentFont = textView.typingAttributes[.font] as? NSFont ?? initialFont
+            MarkdownStyler.apply(to: textView, baseFont: currentFont)
             self.isApplyingStyles = false
         }
 
         // Apply initial styling
         isApplyingStyles = true
-        MarkdownStyler.apply(to: textView, baseFont: font)
+        MarkdownStyler.apply(to: textView, baseFont: initialFont)
         isApplyingStyles = false
     }
 }
@@ -337,14 +344,15 @@ struct MarkdownStyler {
                 textView.addAttributes([.font: headingFont], range: styledRange.range)
 
             case .bold:
-                let boldFont = NSFont.monospacedSystemFont(
-                    ofSize: font.pointSize,
-                    weight: .bold
-                )
+                // Get existing font at this range to preserve italic trait if present
+                let existingFont = textView.attributedString().attribute(.font, at: styledRange.range.location, effectiveRange: nil) as? NSFont ?? font
+                let boldFont = NSFontManager.shared.convert(existingFont, toHaveTrait: .boldFontMask)
                 textView.addAttributes([.font: boldFont], range: styledRange.range)
 
             case .italic:
-                let italicFont = NSFontManager.shared.convert(font, toHaveTrait: .italicFontMask)
+                // Get existing font at this range to preserve bold trait if present
+                let existingFont = textView.attributedString().attribute(.font, at: styledRange.range.location, effectiveRange: nil) as? NSFont ?? font
+                let italicFont = NSFontManager.shared.convert(existingFont, toHaveTrait: .italicFontMask)
                 textView.addAttributes([.font: italicFont], range: styledRange.range)
 
             case .inlineCode:

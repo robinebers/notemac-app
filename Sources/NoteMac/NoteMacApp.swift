@@ -157,12 +157,27 @@ struct EditCommands: Commands {
 struct ViewCommands: Commands {
     @Bindable var appState: AppState
 
+    private let minFontSize: CGFloat = 8
+    private let maxFontSize: CGFloat = 72
+
     var body: some Commands {
         CommandGroup(replacing: .toolbar) {
             Toggle("Word Wrap", isOn: $appState.wordWrapEnabled)
                 .keyboardShortcut("w", modifiers: [.command, .option])
 
             Toggle("Show Line Numbers", isOn: $appState.showLineNumbers)
+
+            Divider()
+
+            Button("Increase Font Size") {
+                appState.fontSize = min(appState.fontSize + 1, maxFontSize)
+            }
+            .keyboardShortcut("+", modifiers: .command)
+
+            Button("Decrease Font Size") {
+                appState.fontSize = max(appState.fontSize - 1, minFontSize)
+            }
+            .keyboardShortcut("-", modifiers: .command)
         }
     }
 }

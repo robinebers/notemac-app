@@ -10,7 +10,8 @@ let package = Package(
         .executable(name: "NoteMac", targets: ["NoteMac"])
     ],
     dependencies: [
-        .package(url: "https://github.com/krzyzanowskim/STTextView", from: "0.9.0")
+        .package(url: "https://github.com/krzyzanowskim/STTextView", from: "0.9.0"),
+        .package(url: "https://github.com/apple/swift-testing.git", from: "0.10.0")
     ],
     targets: [
         .executableTarget(
@@ -25,7 +26,10 @@ let package = Package(
         ),
         .testTarget(
             name: "NoteMacTests",
-            dependencies: ["NoteMac"],
+            dependencies: [
+                "NoteMac",
+                .product(name: "Testing", package: "swift-testing")
+            ],
             path: "Tests/NoteMacTests"
         )
     ]

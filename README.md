@@ -1,6 +1,12 @@
 # NoteMac
 
+![NoteMac Screenshot](notemac.png)
+
 A simple, fast text editor for macOS built with SwiftUI.
+
+## Releases
+
+Download a ready-to-use version in the [release section](https://github.com/robinebers/notemac-app/releases).
 
 ## Features
 

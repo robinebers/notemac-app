@@ -13,3 +13,13 @@ DerivedData/
 *.xcodeproj
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
+
+# Build artifacts
+build/
+*.app
+*.zip
+*.dmg
+*.pkg
+
+# Environment (signing credentials)
+.env

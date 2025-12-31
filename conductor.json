@@ -2,6 +2,8 @@
   "scripts": {
     "setup": "",
     "run": "swift run",
-    "archive": "pkill -f NoteMac 2>/dev/null"
+    "archive": "pkill -f NoteMac 2>/dev/null",
+    "build": "./scripts/build-and-notarize.sh",
+    "build:local": "./scripts/build-and-notarize.sh --skip-notarize"
   }
 }

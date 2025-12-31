@@ -109,6 +109,11 @@ xcrun stapler validate "$APP_BUNDLE"
 echo "==> Final Gatekeeper check..."
 spctl -a -t exec -vv "$APP_BUNDLE"
 
+echo "==> Recreating ZIP with stapled ticket..."
+rm -f "$ZIP_PATH"
+cd "$BUILD_DIR"
+ditto -c -k --keepParent "$APP_NAME.app" "$APP_NAME.zip"
+
 echo ""
 echo "==> Done! Notarized app at: $APP_BUNDLE"
 echo "==> ZIP for distribution: $ZIP_PATH"

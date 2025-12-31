@@ -21,10 +21,7 @@ let package = Package(
                 .product(name: "STTextView", package: "STTextView"),
                 .product(name: "Markdown", package: "swift-markdown")
             ],
-            path: "Sources/NoteMac",
-            resources: [
-                .process("Resources")
-            ]
+            path: "Sources/NoteMac"
         ),
         .testTarget(
             name: "NoteMacTests",

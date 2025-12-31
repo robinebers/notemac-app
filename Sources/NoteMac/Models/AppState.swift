@@ -258,6 +258,10 @@ final class AppState {
         }
     }
 
+    func moveDocuments(from source: IndexSet, to destination: Int) {
+        documents.move(fromOffsets: source, toOffset: destination)
+    }
+
     // MARK: - File Operations
 
     /// Open one or more files using NSOpenPanel

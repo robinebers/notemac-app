@@ -1,4 +1,5 @@
 import Testing
+import Foundation
 @testable import NoteMac
 
 @Suite("AppState Tests")
@@ -51,5 +52,19 @@ struct AppStateTests {
 
         #expect(state.activeDocument != nil)
         #expect(state.activeDocument?.id == state.activeDocumentID)
+    }
+
+    @Test("Can reorder documents")
+    func canReorderDocuments() {
+        let state = AppState()
+        let docA = Document(content: "A")
+        let docB = Document(content: "B")
+        let docC = Document(content: "C")
+
+        state.documents = [docA, docB, docC]
+
+        state.moveDocuments(from: IndexSet(integer: 0), to: 3)
+
+        #expect(state.documents.map { $0.id } == [docB.id, docC.id, docA.id])
     }
 }

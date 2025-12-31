@@ -2,6 +2,80 @@ import SwiftUI
 import AppKit
 import STTextView
 
+// MARK: - Window Position Persistence
+
+// Must match the key in NoteMacApp.swift AppDelegate
+private let windowFrameKey = "NoteMacMainWindowFrame"
+
+/// Saves the window frame to UserDefaults (must be called on main actor)
+@MainActor
+private func saveWindowFrame(_ window: NSWindow) {
+    let frameString = NSStringFromRect(window.frame)
+    UserDefaults.standard.set(frameString, forKey: windowFrameKey)
+}
+
+/// NSViewRepresentable that saves window position on move/resize
+private struct WindowPositionSaver: NSViewRepresentable {
+    func makeCoordinator() -> Coordinator {
+        Coordinator()
+    }
+
+    func makeNSView(context: Context) -> NSView {
+        let view = NSView()
+        DispatchQueue.main.async {
+            guard let window = view.window else { return }
+            context.coordinator.setupObservers(for: window)
+        }
+        return view
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {}
+
+    /// Coordinator to manage observer lifecycle and prevent memory leaks
+    class Coordinator {
+        private var moveObserver: NSObjectProtocol?
+        private var resizeObserver: NSObjectProtocol?
+
+        func setupObservers(for window: NSWindow) {
+            // Only set up once
+            guard moveObserver == nil else { return }
+
+            moveObserver = NotificationCenter.default.addObserver(
+                forName: NSWindow.didMoveNotification,
+                object: window,
+                queue: .main
+            ) { notification in
+                guard let window = notification.object as? NSWindow else { return }
+                MainActor.assumeIsolated {
+                    saveWindowFrame(window)
+                }
+            }
+
+            resizeObserver = NotificationCenter.default.addObserver(
+                forName: NSWindow.didResizeNotification,
+                object: window,
+                queue: .main
+            ) { notification in
+                guard let window = notification.object as? NSWindow else { return }
+                MainActor.assumeIsolated {
+                    saveWindowFrame(window)
+                }
+            }
+        }
+
+        deinit {
+            if let observer = moveObserver {
+                NotificationCenter.default.removeObserver(observer)
+            }
+            if let observer = resizeObserver {
+                NotificationCenter.default.removeObserver(observer)
+            }
+        }
+    }
+}
+
+// MARK: - Main Window View
+
 struct MainWindow: View {
     @Bindable var appState: AppState
     @State private var textView: STTextView?
@@ -64,6 +138,7 @@ struct MainWindow: View {
             }
         }
         .navigationSplitViewStyle(.balanced)
+        .background(WindowPositionSaver())
         .onAppear {
             appState.findNextAction = { performFind(next: true) }
             appState.findPreviousAction = { performFind(next: false) }

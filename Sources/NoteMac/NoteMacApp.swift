@@ -1,7 +1,13 @@
 import SwiftUI
 import AppKit
 
+// App version constant
+let appVersion = "0.1"
+
 // MARK: - AppDelegate for proper macOS app activation
+
+// Key for manual window frame persistence (setFrameAutosaveName is broken for multi-monitor)
+private let windowFrameKey = "NoteMacMainWindowFrame"
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillFinishLaunching(_ notification: Notification) {
@@ -11,14 +17,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        // Activate the app and bring it to the foreground
+        // Manually restore window frame BEFORE making visible
+        // Note: setFrameAutosaveName is broken for multi-monitor - always restores to primary display
+        // So we use manual save/restore with NSStringFromRect/NSRectFromString
+        if let window = NSApp.windows.first,
+           let frameString = UserDefaults.standard.string(forKey: windowFrameKey),
+           !frameString.isEmpty {
+            let savedFrame = NSRectFromString(frameString)
+            if savedFrame.width > 0 && savedFrame.height > 0 {
+                // Validate frame is visible on at least one current screen
+                // (handles case where external monitor was disconnected)
+                let isVisible = NSScreen.screens.contains { screen in
+                    screen.visibleFrame.intersects(savedFrame)
+                }
+                if isVisible {
+                    window.setFrame(savedFrame, display: false)
+                } else {
+                    // Saved frame is off-screen (monitor disconnected), center instead
+                    window.center()
+                }
+            }
+        }
+
+        // Now activate the app and bring it to the foreground
         NSApp.activate(ignoringOtherApps: true)
 
-        // Make the main window key and bring to front
+        // Make the main window key
         DispatchQueue.main.async {
-            if let window = NSApp.windows.first {
-                window.makeKeyAndOrderFront(nil)
-            }
+            NSApp.windows.first?.makeKeyAndOrderFront(nil)
         }
     }
 
@@ -45,6 +71,8 @@ struct NoteMacApp: App {
         }
     }
 
+    @Environment(\.openWindow) private var openWindow
+
     var body: some Scene {
         WindowGroup {
             MainWindow(appState: appState)
@@ -52,6 +80,12 @@ struct NoteMacApp: App {
         }
         .windowStyle(.hiddenTitleBar)
         .commands {
+            // About menu
+            CommandGroup(replacing: .appInfo) {
+                Button("About NoteMac") {
+                    openWindow(id: "about")
+                }
+            }
             FileCommands(appState: appState)
             EditCommands(appState: appState)
             ViewCommands(appState: appState)
@@ -62,6 +96,11 @@ struct NoteMacApp: App {
                 saveSession()
             }
         }
+
+        Window("About NoteMac", id: "about") {
+            AboutView()
+        }
+        .windowResizability(.contentSize)
     }
 
     /// Save the current session to persistent storage
@@ -109,7 +148,6 @@ struct FileCommands: Commands {
                 }
             }
             .keyboardShortcut("w", modifiers: .command)
-            .disabled(appState.documents.count <= 1)
         }
     }
 }
@@ -184,5 +222,32 @@ struct ViewCommands: Commands {
             }
             .keyboardShortcut("-", modifiers: .command)
         }
+    }
+}
+
+struct AboutView: View {
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        VStack(spacing: 16) {
+            Image(nsImage: NSApp.applicationIconImage)
+                .resizable()
+                .frame(width: 64, height: 64)
+
+            Text("NoteMac")
+                .font(.title)
+                .fontWeight(.semibold)
+
+            Text("Version \(appVersion)")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+
+            Text("A simple, fast text editor for macOS")
+                .font(.caption)
+                .foregroundStyle(.tertiary)
+                .multilineTextAlignment(.center)
+        }
+        .padding(32)
+        .frame(width: 280)
     }
 }

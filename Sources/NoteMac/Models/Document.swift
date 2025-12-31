@@ -20,6 +20,9 @@ final class Document: Identifiable {
     /// The last saved/loaded content snapshot for intelligent dirty comparison
     private var savedContent: String
 
+    /// When true, always report as modified regardless of content comparison
+    private var forceModified: Bool = false
+
     var content: String {
         didSet {
             if content != oldValue {
@@ -29,9 +32,9 @@ final class Document: Identifiable {
     }
     var filePath: URL?
 
-    /// Computed: true when current content differs from saved snapshot
+    /// Computed: true when current content differs from saved snapshot or force flag is set
     var isModified: Bool {
-        content != savedContent
+        forceModified || content != savedContent
     }
 
     var cursorLine: Int
@@ -82,13 +85,12 @@ final class Document: Identifiable {
     /// Update the saved content snapshot (call after save/load)
     func markSaved() {
         savedContent = content
+        forceModified = false
     }
 
     /// Mark as modified for recovered documents (file missing on restore)
+    /// Works correctly even when content is empty
     func markAsRecovered() {
-        // Use a unique object reference that can never match actual content
-        savedContent = ""
-        content = content.isEmpty ? " " : content + "\0"
-        content = String(content.dropLast())
+        forceModified = true
     }
 }

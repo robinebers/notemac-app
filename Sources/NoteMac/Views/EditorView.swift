@@ -164,5 +164,38 @@ private struct EditorViewRepresentable: NSViewRepresentable {
                 self.document.content = textView.string
             }
         }
+
+        nonisolated func textViewDidChangeSelection(_ notification: Notification) {
+            guard let textView = notification.object as? STTextView else {
+                return
+            }
+
+            Task { @MainActor [weak self] in
+                guard let self else { return }
+                self.updateCursorPosition(from: textView)
+            }
+        }
+
+        /// Calculate and update cursor line/column from text view selection
+        private func updateCursorPosition(from textView: STTextView) {
+            let string = textView.string as NSString
+            let selectedRange = textView.selectedRange()
+            let cursorLocation = selectedRange.location
+
+            // Handle empty document or cursor at start
+            guard cursorLocation > 0 else {
+                document.cursorLine = 1
+                document.cursorColumn = 1
+                return
+            }
+
+            // Count newlines before cursor to get line number
+            let textBeforeCursor = string.substring(to: cursorLocation)
+            let lines = textBeforeCursor.components(separatedBy: .newlines)
+
+            // Line is count of lines, column is position in last line (1-indexed)
+            document.cursorLine = lines.count
+            document.cursorColumn = (lines.last?.count ?? 0) + 1
+        }
     }
 }

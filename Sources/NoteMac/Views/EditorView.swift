@@ -39,7 +39,13 @@ private struct EditorViewRepresentable: NSViewRepresentable {
         textView.delegate = context.coordinator
 
         // Add padding inside the editor for better readability
-        scrollView.contentInsets = NSEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+        // Use lineFragmentPadding for horizontal text inset (space from left/right edge)
+        if let textContainer = textView.textLayoutManager.textContainer {
+            textContainer.lineFragmentPadding = 20
+        }
+        // Use scroll view content insets for top/bottom padding
+        scrollView.automaticallyAdjustsContentInsets = false
+        scrollView.contentInsets = NSEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
 
         // Configure word wrap properly
         configureWordWrap(textView: textView, scrollView: scrollView, enabled: wordWrap)

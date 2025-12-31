@@ -279,21 +279,21 @@ struct MarkdownRangeCollector: MarkupWalker {
         return NSRange(location: startOffset, length: endOffset - startOffset)
     }
 
-    /// Convert a SourceLocation (line/column in Unicode scalars) to UTF-16 offset for NSRange
+    /// Convert a SourceLocation (line/column in UTF-8 bytes) to UTF-16 offset for NSRange
     private func utf16Offset(for location: SourceLocation) -> Int {
         var utf16Offset = 0
         var line = 1
-        var column = 1  // swift-markdown uses 1-based Unicode scalar columns
+        var byteColumn = 1  // cmark/swift-markdown uses 1-based UTF-8 byte columns
 
         for scalar in source.unicodeScalars {
-            if line == location.line && column == location.column {
+            if line == location.line && byteColumn == location.column {
                 return utf16Offset
             }
             if scalar == "\n" {
                 line += 1
-                column = 1
+                byteColumn = 1
             } else {
-                column += 1
+                byteColumn += scalar.utf8.count  // Count UTF-8 bytes, not scalars
             }
             // NSString/NSRange uses UTF-16, so count UTF-16 code units
             utf16Offset += scalar.utf16.count

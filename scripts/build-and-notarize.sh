@@ -17,6 +17,14 @@ APP_NAME="NoteMac"
 APP_BUNDLE="$BUILD_DIR/$APP_NAME.app"
 ZIP_PATH="$BUILD_DIR/$APP_NAME.zip"
 
+# Parse arguments first (before validation)
+SKIP_NOTARIZE=false
+for arg in "$@"; do
+    case $arg in
+        --skip-notarize) SKIP_NOTARIZE=true ;;
+    esac
+done
+
 # Load .env if present
 if [ -f "$PROJECT_DIR/.env" ]; then
     set -a
@@ -26,15 +34,9 @@ fi
 
 # Validate required env vars
 : "${SIGNING_IDENTITY:?Error: SIGNING_IDENTITY not set. See .env.example}"
-: "${KEYCHAIN_PROFILE:?Error: KEYCHAIN_PROFILE not set. See .env.example}"
-
-# Parse arguments
-SKIP_NOTARIZE=false
-for arg in "$@"; do
-    case $arg in
-        --skip-notarize) SKIP_NOTARIZE=true ;;
-    esac
-done
+if [ "$SKIP_NOTARIZE" = false ]; then
+    : "${KEYCHAIN_PROFILE:?Error: KEYCHAIN_PROFILE not set. See .env.example}"
+fi
 
 echo "==> Cleaning build directory..."
 rm -rf "$BUILD_DIR"
@@ -102,7 +104,7 @@ echo "==> Stapling notarization ticket..."
 xcrun stapler staple "$APP_BUNDLE"
 
 echo "==> Validating stapled ticket..."
-stapler validate "$APP_BUNDLE"
+xcrun stapler validate "$APP_BUNDLE"
 
 echo "==> Final Gatekeeper check..."
 spctl -a -t exec -vv "$APP_BUNDLE"

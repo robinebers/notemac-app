@@ -10,16 +10,27 @@ Download a ready-to-use version in the [release section](https://github.com/robi
 
 ## Features
 
-- Native macOS app with SwiftUI
-- Tabbed document interface
-- Bear-style live Markdown rendering (syntax visible but dimmed)
-- Find and replace
-- Session persistence (reopens your documents on launch)
-- Customizable font size, word wrap, and line numbers
+**Editor**
+- Native macOS app with SwiftUI + [STTextView](https://github.com/krzyzanowskim/STTextView)
+- Tabbed document interface with drag-to-reorder
+- Bear-style live Markdown rendering (syntax visible but dimmed at 40% opacity)
+- Find and replace with wrap-around navigation
+- Adjustable font size (⌘+/⌘-)
+- Toggle word wrap and line numbers
+
+**File Handling**
+- Supports `.txt`, `.md`, and `.markdown` files
+- Automatic encoding detection (UTF-8, UTF-16, ASCII, ISO Latin 1)
+- Preserves line endings (LF/CRLF)
+
+**Session Persistence**
+- Reopens all documents on launch with cursor positions restored
+- Remembers window position (multi-monitor aware)
+- Document recovery if files are moved/deleted
 
 ## Requirements
 
-- macOS 15.0+
+- macOS 15.0 (Sequoia)+
 - Xcode 16+ / Swift 6.0+
 
 ## Development
@@ -77,16 +88,31 @@ Output:
 ## Project Structure
 
 ```
-NoteMac/
+notemac-app/
 ├── Sources/NoteMac/
-│   ├── Models/          # AppState, Document
-│   ├── Views/           # SwiftUI views
-│   ├── Services/        # FileService, SessionStore
-│   └── NoteMacApp.swift # App entry point
+│   ├── NoteMacApp.swift          # App entry, AppDelegate, menu commands
+│   ├── Models/
+│   │   ├── AppState.swift        # Central state, document lifecycle
+│   │   └── Document.swift        # Document model, modification tracking
+│   ├── Views/
+│   │   ├── MainWindow.swift      # Window layout, find operations
+│   │   ├── EditorView.swift      # Text editor with markdown plugin
+│   │   ├── Sidebar.swift         # Document list with drag reorder
+│   │   ├── FindBar.swift         # Search/replace UI
+│   │   └── StatusBar.swift       # Cursor position, encoding, line endings
+│   └── Services/
+│       ├── FileService.swift     # File I/O, encoding detection
+│       ├── SessionStore.swift    # Session persistence (JSON)
+│       └── MarkdownStyler.swift  # Markdown AST parsing + styling
+├── Tests/NoteMacTests/
+├── Resources/
+│   ├── AppIcon.icns              # App icon
+│   └── Assets.car                # Compiled assets (Tahoe Liquid Glass)
+├── Design/AppIcon/               # Source icon files and exports
 ├── scripts/
 │   └── build-and-notarize.sh
-├── Info.plist           # App bundle metadata
-├── NoteMac.entitlements # Hardened runtime permissions
+├── Info.plist                    # App bundle metadata
+├── NoteMac.entitlements          # Hardened runtime permissions
 └── Package.swift
 ```
 

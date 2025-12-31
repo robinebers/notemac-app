@@ -59,10 +59,20 @@ private struct EditorViewRepresentable: NSViewRepresentable {
             scrollView.rulersVisible = true
         }
 
-        // Set initial content
+        // Set initial content and position cursor at beginning
         context.coordinator.isUpdating = true
         textView.setAttributedString(NSAttributedString(string: document.content))
+        textView.setSelectedRange(NSRange(location: 0, length: 0))
         context.coordinator.isUpdating = false
+
+        // Add markdown styling plugin for markdown files
+        // The plugin handles real-time styling via STTextView's event system
+        if document.isMarkdown {
+            let baseFont = NSFont.monospacedSystemFont(ofSize: fontSize, weight: .regular)
+            let plugin = MarkdownStylingPlugin(baseFont: baseFont)
+            textView.addPlugin(plugin)
+            context.coordinator.markdownPlugin = plugin
+        }
 
         // Provide access to text view
         if let onTextViewReady {
@@ -82,20 +92,75 @@ private struct EditorViewRepresentable: NSViewRepresentable {
             context.coordinator.document = document
         }
 
+        // Handle markdown plugin based on document type
+        // Check isMarkdown independently - it can change via Save As without changing document ID
+        // STTextView doesn't have removePlugin, so we enable/disable instead
+        if let existingPlugin = context.coordinator.markdownPlugin {
+            let wasEnabled = existingPlugin.isEnabled
+            existingPlugin.isEnabled = document.isMarkdown
+            // Clear markdown styles when switching from markdown to non-markdown
+            if wasEnabled && !document.isMarkdown {
+                let baseFont = NSFont.monospacedSystemFont(ofSize: fontSize, weight: .regular)
+                let baseAttrs: [NSAttributedString.Key: Any] = [.font: baseFont, .foregroundColor: NSColor.labelColor]
+                // Reset typingAttributes so new text uses base style (even if document is empty)
+                textView.typingAttributes = baseAttrs
+                let textLength = (textView.string as NSString).length
+                if textLength > 0 {
+                    textView.setAttributes(baseAttrs, range: NSRange(location: 0, length: textLength))
+                }
+            }
+        } else if document.isMarkdown {
+            // Add plugin if switching to markdown and none exists yet
+            let baseFont = NSFont.monospacedSystemFont(ofSize: fontSize, weight: .regular)
+            let plugin = MarkdownStylingPlugin(baseFont: baseFont)
+            textView.addPlugin(plugin)
+            context.coordinator.markdownPlugin = plugin
+        }
+
         // Update content if changed externally or document switched
         context.coordinator.isUpdating = true
         if !context.coordinator.isDidChangeText || documentChanged {
             let currentContent = textView.string
             if currentContent != document.content {
                 textView.setAttributedString(NSAttributedString(string: document.content))
+                // Move cursor to beginning of document when loading new content
+                textView.setSelectedRange(NSRange(location: 0, length: 0))
+                // Apply markdown styling after external content change
+                // The plugin won't catch setAttributedString, so we apply manually
+                if document.isMarkdown {
+                    let baseFont = NSFont.monospacedSystemFont(ofSize: fontSize, weight: .regular)
+                    MarkdownStyler.apply(to: textView, baseFont: baseFont)
+                }
             }
         }
         context.coordinator.isUpdating = false
         context.coordinator.isDidChangeText = false
 
-        // Update font if changed
-        if textView.font != .monospacedSystemFont(ofSize: fontSize, weight: .regular) {
-            textView.font = .monospacedSystemFont(ofSize: fontSize, weight: .regular)
+        // Update font size if changed (e.g., via CMD+/CMD-)
+        // For markdown: compare typing font (textView.font resets all attributes)
+        // For non-markdown: compare textView.font
+        let newBaseFont = NSFont.monospacedSystemFont(ofSize: fontSize, weight: .regular)
+        let currentFontSize: CGFloat
+        if document.isMarkdown {
+            currentFontSize = (textView.typingAttributes[.font] as? NSFont)?.pointSize ?? 13
+        } else {
+            currentFontSize = textView.font?.pointSize ?? 13
+        }
+
+        if currentFontSize != fontSize {
+            if document.isMarkdown {
+                MarkdownStyler.apply(to: textView, baseFont: newBaseFont)
+                textView.typingAttributes[.font] = newBaseFont
+            } else {
+                let textLength = (textView.string as NSString).length
+                if textLength > 0 {
+                    textView.setAttributes([
+                        .font: newBaseFont,
+                        .foregroundColor: NSColor.labelColor
+                    ], range: NSRange(location: 0, length: textLength))
+                }
+                textView.font = newBaseFont
+            }
         }
 
         // Update word wrap if changed (note: widthTracksTextView has inverted semantics)
@@ -148,6 +213,7 @@ private struct EditorViewRepresentable: NSViewRepresentable {
         @Bindable var document: Document
         var isUpdating: Bool = false
         var isDidChangeText: Bool = false
+        var markdownPlugin: MarkdownStylingPlugin?
 
         init(document: Document) {
             self.document = document
@@ -172,6 +238,7 @@ private struct EditorViewRepresentable: NSViewRepresentable {
             Task { @MainActor [weak self] in
                 guard let self, !self.isUpdating else { return }
                 self.document.content = textView.string
+                // Markdown styling is handled by MarkdownStylingPlugin via STTextView's event system
             }
         }
 

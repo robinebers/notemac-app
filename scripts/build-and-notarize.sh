@@ -57,14 +57,24 @@ cp ".build/release/$APP_NAME" "$APP_BUNDLE/Contents/MacOS/"
 cp "$PROJECT_DIR/Info.plist" "$APP_BUNDLE/Contents/"
 
 # Copy resources (app icon)
-if [ -d "Sources/$APP_NAME/Resources/Assets.xcassets" ]; then
-    # Compile asset catalog
-    xcrun actool "Sources/$APP_NAME/Resources/Assets.xcassets" \
-        --compile "$APP_BUNDLE/Contents/Resources" \
-        --platform macosx \
-        --minimum-deployment-target 15.0 \
-        --app-icon AppIcon \
-        --output-partial-info-plist "$BUILD_DIR/AssetCatalog.plist" 2>/dev/null || true
+# First try to compile asset catalog if it exists and has icon images
+ICON_COPIED=false
+if [ -d "Sources/$APP_NAME/Resources/Assets.xcassets/AppIcon.appiconset" ]; then
+    # Check if appiconset has actual images (not just Contents.json)
+    ICON_COUNT=$(find "Sources/$APP_NAME/Resources/Assets.xcassets/AppIcon.appiconset" -name "*.png" 2>/dev/null | wc -l)
+    if [ "$ICON_COUNT" -gt 0 ]; then
+        xcrun actool "Sources/$APP_NAME/Resources/Assets.xcassets" \
+            --compile "$APP_BUNDLE/Contents/Resources" \
+            --platform macosx \
+            --minimum-deployment-target 15.0 \
+            --app-icon AppIcon \
+            --output-partial-info-plist "$BUILD_DIR/AssetCatalog.plist" 2>/dev/null && ICON_COPIED=true
+    fi
+fi
+
+# Fall back to pre-built icns if asset catalog didn't work
+if [ "$ICON_COPIED" = false ] && [ -f "$PROJECT_DIR/Resources/AppIcon.icns" ]; then
+    cp "$PROJECT_DIR/Resources/AppIcon.icns" "$APP_BUNDLE/Contents/Resources/"
 fi
 
 # Copy any other resources from the bundle

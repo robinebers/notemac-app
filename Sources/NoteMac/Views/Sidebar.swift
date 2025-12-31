@@ -21,8 +21,12 @@ struct Sidebar: View {
                     .listRowInsets(EdgeInsets(top: 2, leading: 8, bottom: 2, trailing: 8))
                     .listRowSeparator(.hidden)
                 }
+                .onMove { indices, newOffset in
+                    appState.moveDocuments(from: indices, to: newOffset)
+                }
             }
             .listStyle(.sidebar)
+            .environment(\.editMode, .constant(.active))
 
             Divider()
 

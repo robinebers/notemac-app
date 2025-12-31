@@ -2,7 +2,7 @@ import SwiftUI
 import AppKit
 
 // App version constant
-let appVersion = "0.1"
+let appVersion = "0.11"
 
 // MARK: - AppDelegate for proper macOS app activation
 
@@ -227,6 +227,11 @@ struct ViewCommands: Commands {
 
 struct AboutView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var colorScheme
+
+    private var linkColor: Color {
+        colorScheme == .dark ? Color(red: 0.4, green: 0.6, blue: 1.0) : Color(red: 0.0, green: 0.4, blue: 0.9)
+    }
 
     var body: some View {
         VStack(spacing: 16) {
@@ -241,11 +246,22 @@ struct AboutView: View {
             Text("Version \(appVersion)")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
+                .textSelection(.enabled)
 
             Text("A simple, fast text editor for macOS")
                 .font(.caption)
                 .foregroundStyle(.tertiary)
                 .multilineTextAlignment(.center)
+
+            HStack(spacing: 4) {
+                Text("Made with")
+                Text("❤️")
+                Text("by")
+                Link("Robin Ebers", destination: URL(string: "https://itsbyrob.in/x")!)
+                    .foregroundColor(linkColor)
+                    .fontWeight(.bold)
+            }
+            .font(.caption)
         }
         .padding(32)
         .frame(width: 280)

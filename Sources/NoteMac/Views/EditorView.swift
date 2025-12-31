@@ -36,8 +36,13 @@ private struct EditorViewRepresentable: NSViewRepresentable {
 
         textView.font = .monospacedSystemFont(ofSize: fontSize, weight: .regular)
         textView.highlightSelectedLine = true
-        textView.widthTracksTextView = wordWrap
         textView.delegate = context.coordinator
+
+        // Add padding inside the editor for better readability
+        scrollView.contentInsets = NSEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+
+        // Configure word wrap properly
+        configureWordWrap(textView: textView, scrollView: scrollView, enabled: wordWrap)
 
         // Set up line numbers
         if showLineNumbers {
@@ -87,9 +92,10 @@ private struct EditorViewRepresentable: NSViewRepresentable {
             textView.font = .monospacedSystemFont(ofSize: fontSize, weight: .regular)
         }
 
-        // Update word wrap if changed
-        if textView.widthTracksTextView != wordWrap {
-            textView.widthTracksTextView = wordWrap
+        // Update word wrap if changed (note: widthTracksTextView has inverted semantics)
+        let currentWrapState = !textView.widthTracksTextView
+        if currentWrapState != wordWrap {
+            configureWordWrap(textView: textView, scrollView: scrollView, enabled: wordWrap)
         }
 
         // Update line numbers if changed
@@ -110,6 +116,25 @@ private struct EditorViewRepresentable: NSViewRepresentable {
 
     func makeCoordinator() -> EditorCoordinator {
         EditorCoordinator(document: document)
+    }
+
+    /// Configure word wrap for the text view
+    /// When enabled: text wraps at view edge, no horizontal scroll
+    /// When disabled: text extends horizontally, horizontal scroll enabled
+    ///
+    /// Note: STTextView's `widthTracksTextView` has inverted semantics:
+    /// - false = text constrained to view width (wrap)
+    /// - true = text can extend beyond view (no wrap)
+    private func configureWordWrap(textView: STTextView, scrollView: NSScrollView, enabled: Bool) {
+        if enabled {
+            // Word wrap ON: constrain text to view width
+            textView.widthTracksTextView = false
+            scrollView.hasHorizontalScroller = false
+        } else {
+            // Word wrap OFF: allow text to extend horizontally
+            textView.widthTracksTextView = true
+            scrollView.hasHorizontalScroller = true
+        }
     }
 
     @MainActor

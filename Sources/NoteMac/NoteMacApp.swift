@@ -162,6 +162,11 @@ struct ViewCommands: Commands {
 
     var body: some Commands {
         CommandGroup(replacing: .toolbar) {
+            Toggle("Show Sidebar", isOn: $appState.sidebarVisible)
+                .keyboardShortcut("b", modifiers: .command)
+
+            Divider()
+
             Toggle("Word Wrap", isOn: $appState.wordWrapEnabled)
                 .keyboardShortcut("w", modifiers: [.command, .option])
 

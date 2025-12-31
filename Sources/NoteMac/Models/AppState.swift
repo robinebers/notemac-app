@@ -10,6 +10,7 @@ final class AppState {
     var wordWrapEnabled: Bool
     var showLineNumbers: Bool
     var fontSize: CGFloat
+    var sidebarVisible: Bool
 
     // Find bar state
     var findBarVisible: Bool
@@ -32,6 +33,7 @@ final class AppState {
         self.wordWrapEnabled = true
         self.showLineNumbers = false
         self.fontSize = 13
+        self.sidebarVisible = true
         self.findBarVisible = false
         self.searchText = ""
         self.replaceText = ""
@@ -171,9 +173,71 @@ final class AppState {
         activeDocumentID = doc.id
     }
 
+    /// Close a document, prompting to save if modified
+    @MainActor
     func closeDocument(id: UUID) {
         guard let index = documents.firstIndex(where: { $0.id == id }) else { return }
+        let doc = documents[index]
 
+        if doc.isModified {
+            // Prompt user to save changes
+            let alert = NSAlert()
+            alert.messageText = "Do you want to save the changes you made to \(doc.title)?"
+            alert.informativeText = "Your changes will be lost if you don't save them."
+            alert.alertStyle = .warning
+            alert.addButton(withTitle: "Save")
+            alert.addButton(withTitle: "Don't Save")
+            alert.addButton(withTitle: "Cancel")
+
+            let response = alert.runModal()
+
+            switch response {
+            case .alertFirstButtonReturn: // Save
+                if doc.filePath != nil {
+                    // Save directly
+                    do {
+                        try FileService.save(content: doc.content, to: doc.filePath!)
+                        doc.markSaved()
+                    } catch {
+                        showError(message: "Failed to save: \(error.localizedDescription)")
+                        return // Don't close on save failure
+                    }
+                } else {
+                    // Need Save As for untitled document
+                    let panel = NSSavePanel()
+                    panel.allowedContentTypes = [.plainText]
+                    panel.nameFieldStringValue = doc.title
+                    panel.canCreateDirectories = true
+
+                    let saveResponse = panel.runModal()
+                    guard saveResponse == .OK, let url = panel.url else {
+                        return // User cancelled Save As, don't close
+                    }
+
+                    do {
+                        try FileService.save(content: doc.content, to: url)
+                        doc.filePath = url
+                        doc.markSaved()
+                    } catch {
+                        showError(message: "Failed to save: \(error.localizedDescription)")
+                        return // Don't close on save failure
+                    }
+                }
+                // Fall through to close after successful save
+
+            case .alertSecondButtonReturn: // Don't Save
+                break // Proceed to close without saving
+
+            default: // Cancel
+                return // Don't close
+            }
+        }
+
+        performClose(at: index, id: id)
+    }
+
+    /// Force close without prompting (for internal use after save confirmation)
+    private func performClose(at index: Int, id: UUID) {
         documents.remove(at: index)
 
         // If we closed the active document, select another
@@ -267,6 +331,12 @@ final class AppState {
     @MainActor
     private func loadFiles(urls: [URL]) {
         for url in urls {
+            // Check if file is already open
+            if let existingDoc = documents.first(where: { $0.filePath == url }) {
+                activeDocumentID = existingDoc.id
+                continue
+            }
+
             do {
                 let result = try FileService.load(from: url)
 

@@ -5,10 +5,16 @@ import STTextView
 struct MainWindow: View {
     @Bindable var appState: AppState
     @State private var textView: STTextView?
-    @State private var columnVisibility: NavigationSplitViewVisibility = .all
+
+    private var columnVisibility: Binding<NavigationSplitViewVisibility> {
+        Binding(
+            get: { appState.sidebarVisible ? .all : .detailOnly },
+            set: { appState.sidebarVisible = ($0 != .detailOnly) }
+        )
+    }
 
     var body: some View {
-        NavigationSplitView(columnVisibility: $columnVisibility) {
+        NavigationSplitView(columnVisibility: columnVisibility) {
             // Sidebar (left column) - Finder-style document list
             Sidebar(appState: appState)
                 .navigationSplitViewColumnWidth(min: 180, ideal: 220, max: 300)

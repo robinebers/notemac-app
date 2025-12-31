@@ -56,12 +56,13 @@ struct MarkdownRangeCollector: MarkupWalker {
             // Setext-style: dim the underline (=== or ---)
             // The underline is on a separate line at the end
             if let newlineIndex = text.lastIndex(of: "\n") {
-                let underlineStart = text.distance(from: text.startIndex, to: newlineIndex) + 1
-                let underlineLength = text.count - underlineStart
-                if underlineLength > 0 {
-                    // Convert to UTF-16 offset for NSRange
-                    let underlineStartUTF16 = (text as NSString).substring(to: underlineStart).utf16.count
-                    let underlineLengthUTF16 = (text as NSString).length - underlineStartUTF16
+                // Get the text up to and including the newline using Swift String indexing
+                let afterNewline = text.index(after: newlineIndex)
+                let textBeforeUnderline = String(text[..<afterNewline])
+                // Convert to UTF-16 for NSRange
+                let underlineStartUTF16 = textBeforeUnderline.utf16.count
+                let underlineLengthUTF16 = (text as NSString).length - underlineStartUTF16
+                if underlineLengthUTF16 > 0 {
                     let syntaxRange = NSRange(location: nsRange.location + underlineStartUTF16, length: underlineLengthUTF16)
                     ranges.append(StyledRange(range: syntaxRange, style: .syntax))
                 }
@@ -123,10 +124,20 @@ struct MarkdownRangeCollector: MarkupWalker {
         let nsRange = nsRange(from: sourceRange)
         ranges.append(StyledRange(range: nsRange, style: .inlineCode))
 
-        // Dim ` delimiters
-        if nsRange.length >= 2 {
-            let openRange = NSRange(location: nsRange.location, length: 1)
-            let closeRange = NSRange(location: nsRange.location + nsRange.length - 1, length: 1)
+        // Dim ` delimiters - detect actual delimiter length (supports `` and ``` etc)
+        let text = (source as NSString).substring(with: nsRange)
+        var delimiterLength = 0
+        for char in text {
+            if char == "`" {
+                delimiterLength += 1
+            } else {
+                break
+            }
+        }
+
+        if delimiterLength > 0 && nsRange.length >= delimiterLength * 2 {
+            let openRange = NSRange(location: nsRange.location, length: delimiterLength)
+            let closeRange = NSRange(location: nsRange.location + nsRange.length - delimiterLength, length: delimiterLength)
             ranges.append(StyledRange(range: openRange, style: .syntax))
             ranges.append(StyledRange(range: closeRange, style: .syntax))
         }
@@ -196,15 +207,16 @@ struct MarkdownRangeCollector: MarkupWalker {
         let nsRange = nsRange(from: sourceRange)
         ranges.append(StyledRange(range: nsRange, style: .blockquote))
 
-        // Dim > characters at the start of each line
+        // Dim > characters at the start of each line using UTF-16 offsets
         let text = (source as NSString).substring(with: nsRange)
-        var lineStart = 0
+        var lineStartUTF16 = 0
         for line in text.split(separator: "\n", omittingEmptySubsequences: false) {
             if line.hasPrefix(">") {
-                let markerRange = NSRange(location: nsRange.location + lineStart, length: 1)
+                let markerRange = NSRange(location: nsRange.location + lineStartUTF16, length: 1)
                 ranges.append(StyledRange(range: markerRange, style: .syntax))
             }
-            lineStart += line.count + 1  // +1 for newline
+            // Count UTF-16 code units for this line plus newline
+            lineStartUTF16 += line.utf16.count + 1
         }
 
         descendInto(blockQuote)
@@ -222,26 +234,26 @@ struct MarkdownRangeCollector: MarkupWalker {
         let nsRange = nsRange(from: sourceRange)
         let text = (source as NSString).substring(with: nsRange)
 
-        // Skip leading whitespace, then find marker
-        var leadingWhitespace = 0
-        var markerLength = 0
+        // Skip leading whitespace, then find marker using UTF-16 offsets
+        var leadingWhitespaceUTF16 = 0
+        var markerLengthUTF16 = 0
         var foundMarker = false
 
-        for char in text {
+        // Iterate using Unicode scalars and count UTF-16 code units
+        for scalar in text.unicodeScalars {
+            let scalarUTF16Length = scalar.utf16.count
+
             if !foundMarker {
-                // Still looking for marker start
-                if char == "-" || char == "*" || char == "+" {
-                    markerLength = 1
+                if scalar == "-" || scalar == "*" || scalar == "+" {
+                    markerLengthUTF16 = scalarUTF16Length
                     foundMarker = true
-                } else if char.isNumber {
-                    markerLength += 1
-                } else if char == "." && markerLength > 0 {
-                    // End of numbered marker (e.g., "1.")
-                    markerLength += 1
+                } else if scalar.properties.numericType != nil {
+                    markerLengthUTF16 += scalarUTF16Length
+                } else if scalar == "." && markerLengthUTF16 > 0 {
+                    markerLengthUTF16 += scalarUTF16Length
                     foundMarker = true
-                } else if char.isWhitespace && markerLength == 0 {
-                    // Leading whitespace before marker
-                    leadingWhitespace += 1
+                } else if scalar.properties.isWhitespace && markerLengthUTF16 == 0 {
+                    leadingWhitespaceUTF16 += scalarUTF16Length
                 } else {
                     break
                 }
@@ -250,8 +262,8 @@ struct MarkdownRangeCollector: MarkupWalker {
             }
         }
 
-        if markerLength > 0 {
-            let markerRange = NSRange(location: nsRange.location + leadingWhitespace, length: markerLength)
+        if markerLengthUTF16 > 0 {
+            let markerRange = NSRange(location: nsRange.location + leadingWhitespaceUTF16, length: markerLengthUTF16)
             ranges.append(StyledRange(range: markerRange, style: .listMarker))
             ranges.append(StyledRange(range: markerRange, style: .syntax))
         }

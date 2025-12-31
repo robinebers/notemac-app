@@ -90,18 +90,19 @@ private struct EditorViewRepresentable: NSViewRepresentable {
         let documentChanged = context.coordinator.document.id != document.id
         if documentChanged {
             context.coordinator.document = document
+        }
 
-            // Handle markdown plugin based on document type
-            // STTextView doesn't have removePlugin, so we enable/disable instead
-            if let existingPlugin = context.coordinator.markdownPlugin {
-                existingPlugin.isEnabled = document.isMarkdown
-            } else if document.isMarkdown {
-                // Add plugin if switching to markdown and none exists yet
-                let baseFont = NSFont.monospacedSystemFont(ofSize: fontSize, weight: .regular)
-                let plugin = MarkdownStylingPlugin(baseFont: baseFont)
-                textView.addPlugin(plugin)
-                context.coordinator.markdownPlugin = plugin
-            }
+        // Handle markdown plugin based on document type
+        // Check isMarkdown independently - it can change via Save As without changing document ID
+        // STTextView doesn't have removePlugin, so we enable/disable instead
+        if let existingPlugin = context.coordinator.markdownPlugin {
+            existingPlugin.isEnabled = document.isMarkdown
+        } else if document.isMarkdown {
+            // Add plugin if switching to markdown and none exists yet
+            let baseFont = NSFont.monospacedSystemFont(ofSize: fontSize, weight: .regular)
+            let plugin = MarkdownStylingPlugin(baseFont: baseFont)
+            textView.addPlugin(plugin)
+            context.coordinator.markdownPlugin = plugin
         }
 
         // Update content if changed externally or document switched

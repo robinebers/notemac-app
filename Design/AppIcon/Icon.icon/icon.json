@@ -47,6 +47,8 @@
     "circles" : [
       "watchOS"
     ],
-    "squares" : "shared"
+    "squares" : [
+      "macOS"
+    ]
   }
 }

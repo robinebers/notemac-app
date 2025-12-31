@@ -57,23 +57,13 @@ cp ".build/release/$APP_NAME" "$APP_BUNDLE/Contents/MacOS/"
 cp "$PROJECT_DIR/Info.plist" "$APP_BUNDLE/Contents/"
 
 # Copy resources (app icon)
-# First try to compile asset catalog if it exists and has icon images
-ICON_COPIED=false
-if [ -d "Sources/$APP_NAME/Resources/Assets.xcassets/AppIcon.appiconset" ]; then
-    # Check if appiconset has actual images (not just Contents.json)
-    ICON_COUNT=$(find "Sources/$APP_NAME/Resources/Assets.xcassets/AppIcon.appiconset" -name "*.png" 2>/dev/null | wc -l)
-    if [ "$ICON_COUNT" -gt 0 ]; then
-        xcrun actool "Sources/$APP_NAME/Resources/Assets.xcassets" \
-            --compile "$APP_BUNDLE/Contents/Resources" \
-            --platform macosx \
-            --minimum-deployment-target 15.0 \
-            --app-icon AppIcon \
-            --output-partial-info-plist "$BUILD_DIR/AssetCatalog.plist" 2>/dev/null && ICON_COPIED=true
-    fi
+# Copy Assets.car for macOS Tahoe Liquid Glass icons (dark/light/tinted variants)
+if [ -f "$PROJECT_DIR/Resources/Assets.car" ]; then
+    cp "$PROJECT_DIR/Resources/Assets.car" "$APP_BUNDLE/Contents/Resources/"
 fi
 
-# Fall back to pre-built icns if asset catalog didn't work
-if [ "$ICON_COPIED" = false ] && [ -f "$PROJECT_DIR/Resources/AppIcon.icns" ]; then
+# Also copy icns for backward compatibility with older macOS versions
+if [ -f "$PROJECT_DIR/Resources/AppIcon.icns" ]; then
     cp "$PROJECT_DIR/Resources/AppIcon.icns" "$APP_BUNDLE/Contents/Resources/"
 fi
 

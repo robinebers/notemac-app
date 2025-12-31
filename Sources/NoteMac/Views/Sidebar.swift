@@ -30,7 +30,7 @@ struct Sidebar: View {
                         of: [UTType.text],
                         delegate: SidebarDropDelegate(
                             targetDocument: doc,
-                            documents: $appState.documents,
+                            appState: appState,
                             draggedDocumentID: $draggedDocumentID
                         )
                     )
@@ -127,19 +127,19 @@ struct SidebarRow: View {
 
 private struct SidebarDropDelegate: DropDelegate {
     let targetDocument: Document
-    @Binding var documents: [Document]
+    let appState: AppState
     @Binding var draggedDocumentID: UUID?
 
     func dropEntered(info: DropInfo) {
         guard let draggedDocumentID else { return }
-        guard let fromIndex = documents.firstIndex(where: { $0.id == draggedDocumentID }) else { return }
-        guard let toIndex = documents.firstIndex(where: { $0.id == targetDocument.id }) else { return }
+        guard let fromIndex = appState.documents.firstIndex(where: { $0.id == draggedDocumentID }) else { return }
+        guard let toIndex = appState.documents.firstIndex(where: { $0.id == targetDocument.id }) else { return }
         guard fromIndex != toIndex else { return }
 
         withAnimation {
-            documents.move(
-                fromOffsets: IndexSet(integer: fromIndex),
-                toOffset: toIndex > fromIndex ? toIndex + 1 : toIndex
+            appState.moveDocuments(
+                from: IndexSet(integer: fromIndex),
+                to: toIndex > fromIndex ? toIndex + 1 : toIndex
             )
         }
     }

@@ -162,10 +162,10 @@ struct MarkdownRangeCollector: MarkupWalker {
             // Find the ]( position - it's after the link text
             let text = (source as NSString).substring(with: nsRange)
             if let closeBracketIndex = text.firstIndex(of: "]") {
-                let offset = text.distance(from: text.startIndex, to: closeBracketIndex)
+                let offsetUTF16 = text[..<closeBracketIndex].utf16.count
                 let urlPartRange = NSRange(
-                    location: nsRange.location + offset,
-                    length: nsRange.length - offset
+                    location: nsRange.location + offsetUTF16,
+                    length: nsRange.length - offsetUTF16
                 )
                 ranges.append(StyledRange(range: urlPartRange, style: .syntax))
             }

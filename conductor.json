@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "setup": "",
+    "run": "swift run",
+    "archive": "pkill -INT -f \"swift run\""
+  }
+}

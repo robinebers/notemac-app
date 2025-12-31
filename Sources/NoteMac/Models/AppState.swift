@@ -131,7 +131,7 @@ final class AppState {
         }
 
         // Untitled document - restore from stored content
-        return Document(
+        let doc = Document(
             id: data.id,
             content: data.content,
             filePath: nil,
@@ -144,6 +144,12 @@ final class AppState {
             createdAt: data.createdAt,
             lastModifiedAt: data.lastModifiedAt
         )
+        // Untitled documents with content should show as modified since
+        // they've never been saved to disk
+        if !data.content.isEmpty {
+            doc.markAsRecovered()
+        }
+        return doc
     }
 
     /// Get human-readable name for encoding

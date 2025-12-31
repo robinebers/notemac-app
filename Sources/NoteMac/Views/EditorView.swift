@@ -124,19 +124,21 @@ private struct EditorViewRepresentable: NSViewRepresentable {
         context.coordinator.isDidChangeText = false
 
         // Update font size if changed (e.g., via CMD+/CMD-)
-        // For markdown: MarkdownStyler handles all fonts; just update the typing font
-        // For non-markdown: update all text attributes
-        // Note: textView.font setter resets all font attributes, so only call it for non-markdown
+        // For markdown: compare typing font (textView.font resets all attributes)
+        // For non-markdown: compare textView.font
         let newBaseFont = NSFont.monospacedSystemFont(ofSize: fontSize, weight: .regular)
-        let currentFontSize = textView.font?.pointSize ?? 13
+        let currentFontSize: CGFloat
+        if document.isMarkdown {
+            currentFontSize = (textView.typingAttributes[.font] as? NSFont)?.pointSize ?? 13
+        } else {
+            currentFontSize = textView.font?.pointSize ?? 13
+        }
+
         if currentFontSize != fontSize {
             if document.isMarkdown {
                 MarkdownStyler.apply(to: textView, baseFont: newBaseFont)
-                // Only set typing font, don't reset all attributes
-                // Use typingAttributes instead of font property
                 textView.typingAttributes[.font] = newBaseFont
             } else {
-                // For non-markdown, update all text
                 let textLength = (textView.string as NSString).length
                 if textLength > 0 {
                     textView.setAttributes([

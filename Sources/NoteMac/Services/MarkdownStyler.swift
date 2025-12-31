@@ -43,11 +43,29 @@ struct MarkdownRangeCollector: MarkupWalker {
         let nsRange = nsRange(from: sourceRange)
         ranges.append(StyledRange(range: nsRange, style: .heading(level: heading.level)))
 
-        // Dim the # prefix (level count + 1 for space)
-        let prefixLength = heading.level + 1
-        if nsRange.length >= prefixLength {
-            let syntaxRange = NSRange(location: nsRange.location, length: prefixLength)
-            ranges.append(StyledRange(range: syntaxRange, style: .syntax))
+        // Check if ATX-style (starts with #) or setext-style (underline with = or -)
+        let text = (source as NSString).substring(with: nsRange)
+        if text.hasPrefix("#") {
+            // ATX-style: dim the # prefix (level count + 1 for space)
+            let prefixLength = heading.level + 1
+            if nsRange.length >= prefixLength {
+                let syntaxRange = NSRange(location: nsRange.location, length: prefixLength)
+                ranges.append(StyledRange(range: syntaxRange, style: .syntax))
+            }
+        } else {
+            // Setext-style: dim the underline (=== or ---)
+            // The underline is on a separate line at the end
+            if let newlineIndex = text.lastIndex(of: "\n") {
+                let underlineStart = text.distance(from: text.startIndex, to: newlineIndex) + 1
+                let underlineLength = text.count - underlineStart
+                if underlineLength > 0 {
+                    // Convert to UTF-16 offset for NSRange
+                    let underlineStartUTF16 = (text as NSString).substring(to: underlineStart).utf16.count
+                    let underlineLengthUTF16 = (text as NSString).length - underlineStartUTF16
+                    let syntaxRange = NSRange(location: nsRange.location + underlineStartUTF16, length: underlineLengthUTF16)
+                    ranges.append(StyledRange(range: syntaxRange, style: .syntax))
+                }
+            }
         }
 
         descendInto(heading)
@@ -204,28 +222,36 @@ struct MarkdownRangeCollector: MarkupWalker {
         let nsRange = nsRange(from: sourceRange)
         let text = (source as NSString).substring(with: nsRange)
 
-        // Find marker length (bullet or number with period)
+        // Skip leading whitespace, then find marker
+        var leadingWhitespace = 0
         var markerLength = 0
+        var foundMarker = false
+
         for char in text {
-            if char == "-" || char == "*" || char == "+" {
-                markerLength = 1
-                break
-            } else if char.isNumber {
-                markerLength += 1
-            } else if char == "." && markerLength > 0 {
-                markerLength += 1
-                break
-            } else if char == " " && markerLength > 0 {
-                break
-            } else if !char.isWhitespace {
-                break
+            if !foundMarker {
+                // Still looking for marker start
+                if char == "-" || char == "*" || char == "+" {
+                    markerLength = 1
+                    foundMarker = true
+                } else if char.isNumber {
+                    markerLength += 1
+                } else if char == "." && markerLength > 0 {
+                    // End of numbered marker (e.g., "1.")
+                    markerLength += 1
+                    foundMarker = true
+                } else if char.isWhitespace && markerLength == 0 {
+                    // Leading whitespace before marker
+                    leadingWhitespace += 1
+                } else {
+                    break
+                }
             } else {
-                markerLength += 1
+                break
             }
         }
 
         if markerLength > 0 {
-            let markerRange = NSRange(location: nsRange.location, length: markerLength)
+            let markerRange = NSRange(location: nsRange.location + leadingWhitespace, length: markerLength)
             ranges.append(StyledRange(range: markerRange, style: .listMarker))
             ranges.append(StyledRange(range: markerRange, style: .syntax))
         }

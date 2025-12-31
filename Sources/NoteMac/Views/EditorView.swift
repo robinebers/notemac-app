@@ -96,7 +96,19 @@ private struct EditorViewRepresentable: NSViewRepresentable {
         // Check isMarkdown independently - it can change via Save As without changing document ID
         // STTextView doesn't have removePlugin, so we enable/disable instead
         if let existingPlugin = context.coordinator.markdownPlugin {
+            let wasEnabled = existingPlugin.isEnabled
             existingPlugin.isEnabled = document.isMarkdown
+            // Clear markdown styles when switching from markdown to non-markdown
+            if wasEnabled && !document.isMarkdown {
+                let baseFont = NSFont.monospacedSystemFont(ofSize: fontSize, weight: .regular)
+                let textLength = (textView.string as NSString).length
+                if textLength > 0 {
+                    textView.setAttributes([
+                        .font: baseFont,
+                        .foregroundColor: NSColor.labelColor
+                    ], range: NSRange(location: 0, length: textLength))
+                }
+            }
         } else if document.isMarkdown {
             // Add plugin if switching to markdown and none exists yet
             let baseFont = NSFont.monospacedSystemFont(ofSize: fontSize, weight: .regular)

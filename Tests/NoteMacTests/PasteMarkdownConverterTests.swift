@@ -76,4 +76,22 @@ struct PasteMarkdownConverterTests {
         #expect(markdown.contains("[FIRST NAME GOES HERE]") == true)
         #expect(markdown.contains("\\[FIRST NAME GOES HERE\\]") == false)
     }
+
+    @Test("Unescapes square bracket placeholders with underscores")
+    @MainActor
+    func unescapesBracketPlaceholdersWithUnderscores() async throws {
+        let converter = PasteMarkdownConverter()
+        let markdown = converter.unescapeTemplatePlaceholders(in: "Hey \\[FIRST\\_NAME\\],")
+
+        #expect(markdown == "Hey [FIRST_NAME],")
+    }
+
+    @Test("Unescapes multi-line square bracket placeholders")
+    @MainActor
+    func unescapesMultilineBracketPlaceholders() async throws {
+        let converter = PasteMarkdownConverter()
+        let markdown = converter.unescapeTemplatePlaceholders(in: "Hey \\[FIRST\nNAME\\],")
+
+        #expect(markdown == "Hey [FIRST\nNAME],")
+    }
 }

@@ -26,6 +26,17 @@ struct NoteMacTextViewTests {
         }
     }
 
+    @MainActor
+    final class InsertTrackingTextView: NoteMacTextView {
+        var lastInsertedText: String?
+        var lastReplacementRange: NSRange?
+
+        override func insertText(_ insertString: Any, replacementRange: NSRange) {
+            lastInsertedText = insertString as? String
+            lastReplacementRange = replacementRange
+        }
+    }
+
     @Test("Writes plain text only")
     @MainActor
     func writesPlainTextOnly() {
@@ -88,7 +99,7 @@ struct NoteMacTextViewTests {
     @MainActor
     func usesCapturedSelectionForAsyncPaste() async {
         let converter = StubPasteConverter(delayNanoseconds: 50_000_000, markdown: "X")
-        let textView = NoteMacTextView(
+        let textView = InsertTrackingTextView(
             frame: NSRect(x: 0, y: 0, width: 100, height: 100),
             pasteConverter: converter
         )
@@ -97,8 +108,14 @@ struct NoteMacTextViewTests {
 
         textView.paste(nil)
         textView.setSelectedRange(NSRange(location: 6, length: 0))
-        try? await Task.sleep(nanoseconds: 120_000_000)
+        for _ in 0..<25 {
+            if textView.lastInsertedText != nil {
+                break
+            }
+            try? await Task.sleep(nanoseconds: 20_000_000)
+        }
 
-        #expect(textView.string == "XABCDEF")
+        #expect(textView.lastInsertedText == "X")
+        #expect(textView.lastReplacementRange == NSRange(location: 0, length: 0))
     }
 }

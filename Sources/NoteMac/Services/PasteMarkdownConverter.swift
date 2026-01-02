@@ -22,7 +22,7 @@ final class PasteMarkdownConverter {
         options: []
     )
     private static let bracketPlaceholderRegex = try? NSRegularExpression(
-        pattern: #"\\\[[^\n]+\\\]"#,
+        pattern: #"\\\[[^\]]+\\\]"#,
         options: []
     )
 
@@ -84,6 +84,7 @@ final class PasteMarkdownConverter {
                 let unescaped = segment
                     .replacingOccurrences(of: "\\[", with: "[")
                     .replacingOccurrences(of: "\\]", with: "]")
+                    .replacingOccurrences(of: "\\_", with: "_")
                 result.replaceSubrange(matchRange, with: unescaped)
             }
         }

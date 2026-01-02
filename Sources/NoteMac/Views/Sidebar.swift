@@ -70,7 +70,7 @@ struct SidebarRow: View {
     var body: some View {
         HStack(spacing: 8) {
             // Document type icon
-            Image(systemName: document.isMarkdown ? "doc.text" : "doc")
+            Image(systemName: "doc.text")
                 .font(.system(size: 14))
                 .foregroundStyle(.secondary)
                 .frame(width: 16)

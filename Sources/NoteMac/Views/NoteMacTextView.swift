@@ -61,7 +61,8 @@ class NoteMacTextView: STTextView {
 
     @MainActor
     private func scheduleLayoutRefresh() {
-        DispatchQueue.main.async { [weak self] in
+        Task { @MainActor [weak self] in
+            await Task.yield()
             guard let self else { return }
             self.textLayoutManager.invalidateLayout(for: self.textLayoutManager.documentRange)
             self.needsLayout = true

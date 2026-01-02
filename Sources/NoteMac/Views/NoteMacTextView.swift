@@ -49,6 +49,7 @@ class NoteMacTextView: STTextView {
             } else {
                 pasteFallback(sender, replacementRange: replacementRange)
             }
+            scheduleLayoutRefresh()
         }
     }
 
@@ -56,5 +57,21 @@ class NoteMacTextView: STTextView {
     func pasteFallback(_ sender: Any?, replacementRange: NSRange) {
         setSelectedRange(replacementRange)
         super.paste(sender)
+    }
+
+    @MainActor
+    private func scheduleLayoutRefresh() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.textLayoutManager.invalidateLayout(for: self.textLayoutManager.documentRange)
+            self.needsLayout = true
+            self.layoutSubtreeIfNeeded()
+            self.needsDisplay = true
+            if let scrollView = self.enclosingScrollView {
+                scrollView.verticalRulerView?.invalidateHashMarks()
+                scrollView.verticalRulerView?.needsDisplay = true
+                scrollView.reflectScrolledClipView(scrollView.contentView)
+            }
+        }
     }
 }

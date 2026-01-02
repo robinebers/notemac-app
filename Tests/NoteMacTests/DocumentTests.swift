@@ -30,11 +30,14 @@ struct DocumentTests {
         #expect(doc.title == "notes.md")
     }
 
-    @Test("Detects markdown from extension")
+    @Test("Treats all documents as markdown")
     func detectsMarkdown() {
+        let untitledDoc = Document()
+        #expect(untitledDoc.isMarkdown == true)
+
         let txtDoc = Document()
         txtDoc.filePath = URL(fileURLWithPath: "/test.txt")
-        #expect(txtDoc.isMarkdown == false)
+        #expect(txtDoc.isMarkdown == true)
 
         let mdDoc = Document()
         mdDoc.filePath = URL(fileURLWithPath: "/test.md")

@@ -51,8 +51,7 @@ final class Document: Identifiable {
     }
 
     var isMarkdown: Bool {
-        guard let ext = filePath?.pathExtension.lowercased() else { return false }
-        return ext == "md" || ext == "markdown"
+        true
     }
 
     init(

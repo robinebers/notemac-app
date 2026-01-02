@@ -6,14 +6,22 @@ import Foundation
 struct SessionRestorationTests {
 
     // Helper to ensure clean state before each test
-    func cleanupSession() {
-        try? SessionStore.clearSession()
+    func makeStoreURL() -> URL {
+        FileManager.default.temporaryDirectory
+            .appendingPathComponent("NoteMacTests")
+            .appendingPathComponent(UUID().uuidString)
+    }
+
+    func cleanupSession(at baseURL: URL) {
+        try? SessionStore.clearSession(in: baseURL)
+        _ = try? FileManager.default.removeItem(at: baseURL)
     }
 
     @Test("Restores AppState from session data")
     func restoresAppStateFromSession() throws {
-        cleanupSession()
-        defer { cleanupSession() }
+        let storeURL = makeStoreURL()
+        cleanupSession(at: storeURL)
+        defer { cleanupSession(at: storeURL) }
 
         // Create and save a session
         let originalState = AppState()
@@ -27,10 +35,10 @@ struct SessionRestorationTests {
         originalState.documents = [doc1, doc2]
         originalState.activeDocumentID = doc2.id
 
-        try SessionStore.save(appState: originalState)
+        try SessionStore.save(appState: originalState, in: storeURL)
 
         // Load session data
-        guard let sessionData = try SessionStore.load() else {
+        guard let sessionData = try SessionStore.load(from: storeURL) else {
             Issue.record("Session data should not be nil")
             return
         }
@@ -53,13 +61,14 @@ struct SessionRestorationTests {
         let restoredDoc2 = restoredState.documents.first { $0.id == doc2.id }
         #expect(restoredDoc2?.content == "Second document")
 
-        cleanupSession()
+        cleanupSession(at: storeURL)
     }
 
     @Test("Restores untitled documents with content")
     func restoresUntitledDocuments() throws {
-        cleanupSession()
-        defer { cleanupSession() }
+        let storeURL = makeStoreURL()
+        cleanupSession(at: storeURL)
+        defer { cleanupSession(at: storeURL) }
 
         // Create session with untitled document
         let originalState = AppState()
@@ -69,10 +78,10 @@ struct SessionRestorationTests {
 
         originalState.documents = [untitled]
 
-        try SessionStore.save(appState: originalState)
+        try SessionStore.save(appState: originalState, in: storeURL)
 
         // Load and restore
-        guard let sessionData = try SessionStore.load() else {
+        guard let sessionData = try SessionStore.load(from: storeURL) else {
             Issue.record("Session data should not be nil")
             return
         }
@@ -88,13 +97,14 @@ struct SessionRestorationTests {
         #expect(restoredDoc?.cursorLine == 2)
         #expect(restoredDoc?.cursorColumn == 5)
 
-        cleanupSession()
+        cleanupSession(at: storeURL)
     }
 
     @Test("Handles missing files gracefully")
     func handlesMissingFiles() throws {
-        cleanupSession()
-        defer { cleanupSession() }
+        let storeURL = makeStoreURL()
+        cleanupSession(at: storeURL)
+        defer { cleanupSession(at: storeURL) }
 
         // Create session with a file path that doesn't exist
         let originalState = AppState()
@@ -105,10 +115,10 @@ struct SessionRestorationTests {
 
         originalState.documents = [doc]
 
-        try SessionStore.save(appState: originalState)
+        try SessionStore.save(appState: originalState, in: storeURL)
 
         // Load and restore
-        guard let sessionData = try SessionStore.load() else {
+        guard let sessionData = try SessionStore.load(from: storeURL) else {
             Issue.record("Session data should not be nil")
             return
         }
@@ -126,13 +136,14 @@ struct SessionRestorationTests {
         // Document should be marked as modified since content may be stale
         #expect(restoredDoc?.isModified == true)
 
-        cleanupSession()
+        cleanupSession(at: storeURL)
     }
 
     @Test("Reloads existing files from disk")
     func reloadsExistingFiles() throws {
-        cleanupSession()
-        defer { cleanupSession() }
+        let storeURL = makeStoreURL()
+        cleanupSession(at: storeURL)
+        defer { cleanupSession(at: storeURL) }
 
         // Create a temporary file
         let tempDir = FileManager.default.temporaryDirectory
@@ -154,10 +165,10 @@ struct SessionRestorationTests {
 
         originalState.documents = [doc]
 
-        try SessionStore.save(appState: originalState)
+        try SessionStore.save(appState: originalState, in: storeURL)
 
         // Load and restore - should reload from disk
-        guard let sessionData = try SessionStore.load() else {
+        guard let sessionData = try SessionStore.load(from: storeURL) else {
             Issue.record("Session data should not be nil")
             return
         }
@@ -174,13 +185,14 @@ struct SessionRestorationTests {
         // Should be marked as saved since we just loaded from disk
         #expect(restoredDoc?.isModified == false)
 
-        cleanupSession()
+        cleanupSession(at: storeURL)
     }
 
     @Test("Preserves cursor position and scroll")
     func preservesCursorAndScroll() throws {
-        cleanupSession()
-        defer { cleanupSession() }
+        let storeURL = makeStoreURL()
+        cleanupSession(at: storeURL)
+        defer { cleanupSession(at: storeURL) }
 
         let originalState = AppState()
         let doc = Document(content: "Test content")
@@ -190,10 +202,10 @@ struct SessionRestorationTests {
 
         originalState.documents = [doc]
 
-        try SessionStore.save(appState: originalState)
+        try SessionStore.save(appState: originalState, in: storeURL)
 
         // Load and restore
-        guard let sessionData = try SessionStore.load() else {
+        guard let sessionData = try SessionStore.load(from: storeURL) else {
             Issue.record("Session data should not be nil")
             return
         }
@@ -206,13 +218,14 @@ struct SessionRestorationTests {
         #expect(restoredDoc?.cursorColumn == 25)
         #expect(restoredDoc?.scrollPosition == 150.0)
 
-        cleanupSession()
+        cleanupSession(at: storeURL)
     }
 
     @Test("Preserves encoding and line ending settings")
     func preservesEncodingAndLineEnding() throws {
-        cleanupSession()
-        defer { cleanupSession() }
+        let storeURL = makeStoreURL()
+        cleanupSession(at: storeURL)
+        defer { cleanupSession(at: storeURL) }
 
         let originalState = AppState()
         let doc = Document(
@@ -224,10 +237,10 @@ struct SessionRestorationTests {
 
         originalState.documents = [doc]
 
-        try SessionStore.save(appState: originalState)
+        try SessionStore.save(appState: originalState, in: storeURL)
 
         // Load and restore
-        guard let sessionData = try SessionStore.load() else {
+        guard let sessionData = try SessionStore.load(from: storeURL) else {
             Issue.record("Session data should not be nil")
             return
         }
@@ -240,13 +253,14 @@ struct SessionRestorationTests {
         #expect(restoredDoc?.encodingName == "UTF-16")
         #expect(restoredDoc?.lineEnding == .crlf)
 
-        cleanupSession()
+        cleanupSession(at: storeURL)
     }
 
     @Test("Falls back to default state when session is empty")
     func fallsBackToDefaultWhenEmpty() throws {
-        cleanupSession()
-        defer { cleanupSession() }
+        let storeURL = makeStoreURL()
+        cleanupSession(at: storeURL)
+        defer { cleanupSession(at: storeURL) }
 
         // Create session with no documents (edge case)
         let sessionData = SessionData(
@@ -269,13 +283,14 @@ struct SessionRestorationTests {
         #expect(restoredState.showLineNumbers == false)
         #expect(restoredState.fontSize == 12)
 
-        cleanupSession()
+        cleanupSession(at: storeURL)
     }
 
     @Test("Preserves active document selection")
     func preservesActiveDocumentSelection() throws {
-        cleanupSession()
-        defer { cleanupSession() }
+        let storeURL = makeStoreURL()
+        cleanupSession(at: storeURL)
+        defer { cleanupSession(at: storeURL) }
 
         let originalState = AppState()
         let doc1 = Document(content: "Doc 1")
@@ -285,10 +300,10 @@ struct SessionRestorationTests {
         originalState.documents = [doc1, doc2, doc3]
         originalState.activeDocumentID = doc2.id
 
-        try SessionStore.save(appState: originalState)
+        try SessionStore.save(appState: originalState, in: storeURL)
 
         // Load and restore
-        guard let sessionData = try SessionStore.load() else {
+        guard let sessionData = try SessionStore.load(from: storeURL) else {
             Issue.record("Session data should not be nil")
             return
         }
@@ -299,13 +314,14 @@ struct SessionRestorationTests {
         #expect(restoredState.activeDocumentID == doc2.id)
         #expect(restoredState.activeDocument?.content == "Doc 2")
 
-        cleanupSession()
+        cleanupSession(at: storeURL)
     }
 
     @Test("Handles invalid active document ID gracefully")
     func handlesInvalidActiveDocumentID() throws {
-        cleanupSession()
-        defer { cleanupSession() }
+        let storeURL = makeStoreURL()
+        cleanupSession(at: storeURL)
+        defer { cleanupSession(at: storeURL) }
 
         let doc = Document(content: "Test")
 
@@ -336,6 +352,6 @@ struct SessionRestorationTests {
         #expect(restoredState.activeDocumentID == doc.id)
         #expect(restoredState.documents.count == 1)
 
-        cleanupSession()
+        cleanupSession(at: storeURL)
     }
 }

@@ -31,8 +31,8 @@ private struct EditorViewRepresentable: NSViewRepresentable {
     var onTextViewReady: ((STTextView) -> Void)?
 
     func makeNSView(context: Context) -> NSScrollView {
-        let scrollView = STTextView.scrollableTextView()
-        let textView = scrollView.documentView as! STTextView
+        let scrollView = NoteMacTextView.scrollableTextView()
+        let textView = scrollView.documentView as! NoteMacTextView
 
         textView.font = .monospacedSystemFont(ofSize: fontSize, weight: .regular)
         textView.highlightSelectedLine = true
@@ -65,14 +65,12 @@ private struct EditorViewRepresentable: NSViewRepresentable {
         textView.setSelectedRange(NSRange(location: 0, length: 0))
         context.coordinator.isUpdating = false
 
-        // Add markdown styling plugin for markdown files
+        // Add markdown styling plugin for all documents
         // The plugin handles real-time styling via STTextView's event system
-        if document.isMarkdown {
-            let baseFont = NSFont.monospacedSystemFont(ofSize: fontSize, weight: .regular)
-            let plugin = MarkdownStylingPlugin(baseFont: baseFont)
-            textView.addPlugin(plugin)
-            context.coordinator.markdownPlugin = plugin
-        }
+        let baseFont = NSFont.monospacedSystemFont(ofSize: fontSize, weight: .regular)
+        let plugin = MarkdownStylingPlugin(baseFont: baseFont)
+        textView.addPlugin(plugin)
+        context.coordinator.markdownPlugin = plugin
 
         // Provide access to text view
         if let onTextViewReady {

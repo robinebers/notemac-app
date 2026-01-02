@@ -32,14 +32,27 @@ enum SessionStore {
         in: .userDomainMask
     ).first!.appendingPathComponent("NoteMac")
 
-    static let sessionURL = appSupportURL.appendingPathComponent("session.json")
-    static let draftsURL = appSupportURL.appendingPathComponent("drafts")
+    private static func sessionURL(in baseURL: URL) -> URL {
+        baseURL.appendingPathComponent("session.json")
+    }
+
+    private static func draftsURL(in baseURL: URL) -> URL {
+        baseURL.appendingPathComponent("drafts")
+    }
 
     /// Save the current app state to persistent storage
     static func save(appState: AppState) throws {
+        try save(appState: appState, in: appSupportURL)
+    }
+
+    /// Save the current app state to persistent storage at a custom base URL
+    static func save(appState: AppState, in baseURL: URL) throws {
+        let sessionURL = sessionURL(in: baseURL)
+        let draftsURL = draftsURL(in: baseURL)
+
         // Ensure directories exist
         try FileManager.default.createDirectory(
-            at: appSupportURL,
+            at: baseURL,
             withIntermediateDirectories: true
         )
         try FileManager.default.createDirectory(
@@ -84,6 +97,14 @@ enum SessionStore {
     /// Load the previous session state
     /// Returns nil if no session exists or if loading fails
     static func load() throws -> SessionData? {
+        try load(from: appSupportURL)
+    }
+
+    /// Load the previous session state from a custom base URL
+    /// Returns nil if no session exists or if loading fails
+    static func load(from baseURL: URL) throws -> SessionData? {
+        let sessionURL = sessionURL(in: baseURL)
+
         // If session file doesn't exist, return nil (not an error)
         guard FileManager.default.fileExists(atPath: sessionURL.path) else {
             return nil
@@ -99,6 +120,13 @@ enum SessionStore {
 
     /// Clear the session file and all drafts
     static func clearSession() throws {
+        try clearSession(in: appSupportURL)
+    }
+
+    /// Clear the session file and all drafts from a custom base URL
+    static func clearSession(in baseURL: URL) throws {
+        let sessionURL = sessionURL(in: baseURL)
+        let draftsURL = draftsURL(in: baseURL)
         let fm = FileManager.default
 
         // Remove session file if it exists

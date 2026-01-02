@@ -133,7 +133,7 @@ struct MainWindow: View {
                     column: appState.activeDocument?.cursorColumn ?? 1,
                     encoding: appState.activeDocument?.encodingName ?? "UTF-8",
                     lineEnding: appState.activeDocument?.lineEnding.displayName ?? "LF",
-                    documentType: appState.activeDocument?.isMarkdown == true ? "Markdown" : "Plain Text"
+                    documentType: "Markdown"
                 )
             }
         }

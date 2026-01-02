@@ -1,6 +1,15 @@
 {
-  "originHash" : "d7f89678698a3d18ad2f0f18d611a8e2ca145dd5db974f7c6f598ba51f9dabc3",
+  "originHash" : "80964d119edfa49951ce6eadbd386d252bcefb3b78b204e3438b8e923127a25f",
   "pins" : [
+    {
+      "identity" : "demark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/steipete/Demark.git",
+      "state" : {
+        "revision" : "9d12266c98f51099beec92e50483392869b12d77",
+        "version" : "1.1.0"
+      }
+    },
     {
       "identity" : "sttextkitplus",
       "kind" : "remoteSourceControl",

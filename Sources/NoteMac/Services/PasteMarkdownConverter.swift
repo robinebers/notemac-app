@@ -5,20 +5,8 @@ import Demark
 final class PasteMarkdownConverter {
     private let demark: Demark
     private let options: DemarkOptions
-    private static let formattingTagRegex = try? NSRegularExpression(
-        pattern: "<\\s*(h[1-6]|strong|b|em|i|ul|ol|li|code|pre|blockquote|a|img|table|thead|tbody|tr|td|th|hr|del|s|strike|sup|sub)\\b",
-        options: [.caseInsensitive]
-    )
-    private static let boldStyleRegex = try? NSRegularExpression(
-        pattern: "font-weight\\s*:\\s*(bold|[5-9]00)",
-        options: [.caseInsensitive]
-    )
-    private static let italicStyleRegex = try? NSRegularExpression(
-        pattern: "font-style\\s*:\\s*italic",
-        options: [.caseInsensitive]
-    )
-    private static let strikeStyleRegex = try? NSRegularExpression(
-        pattern: "text-decoration(-line)?\\s*:\\s*line-through",
+    private static let structuralTagRegex = try? NSRegularExpression(
+        pattern: "<\\s*(ul|ol|li|code|pre|blockquote|a|img|table|thead|tbody|tr|td|th|hr)\\b",
         options: [.caseInsensitive]
     )
 
@@ -42,7 +30,7 @@ final class PasteMarkdownConverter {
         let plain = pasteboard.string(forType: .string)
 
         if let html = htmlString(from: pasteboard) {
-            if let plain, !containsSupportedFormatting(in: html) {
+            if let plain, !containsMarkdownStructure(in: html) {
                 return plain
             }
 
@@ -59,18 +47,12 @@ final class PasteMarkdownConverter {
         return nil
     }
 
-    private func containsSupportedFormatting(in html: String) -> Bool {
+    private func containsMarkdownStructure(in html: String) -> Bool {
         let range = NSRange(html.startIndex..<html.endIndex, in: html)
 
-        if let regex = Self.formattingTagRegex,
+        if let regex = Self.structuralTagRegex,
            regex.firstMatch(in: html, options: [], range: range) != nil {
             return true
-        }
-
-        for regex in [Self.boldStyleRegex, Self.italicStyleRegex, Self.strikeStyleRegex] {
-            if let regex, regex.firstMatch(in: html, options: [], range: range) != nil {
-                return true
-            }
         }
 
         return false

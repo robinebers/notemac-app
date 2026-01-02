@@ -2,16 +2,27 @@ import AppKit
 import Demark
 
 @MainActor
+protocol MarkdownConverting {
+    func convertToMarkdown(_ html: String, options: DemarkOptions) async throws -> String
+}
+
+extension Demark: MarkdownConverting {}
+
+@MainActor
 final class PasteMarkdownConverter {
-    private let demark: Demark
+    private let demark: any MarkdownConverting
     private let options: DemarkOptions
     private static let placeholderRegex = try? NSRegularExpression(
         pattern: "\\{\\{[^\\}]*\\}\\}",
         options: []
     )
+    private static let bracketPlaceholderRegex = try? NSRegularExpression(
+        pattern: #"\\\[[^\n]+\\\]"#,
+        options: []
+    )
 
     init(
-        demark: Demark = Demark(),
+        demark: any MarkdownConverting = Demark(),
         options: DemarkOptions = DemarkOptions(
             headingStyle: .atx,
             bulletListMarker: "-",
@@ -41,24 +52,35 @@ final class PasteMarkdownConverter {
         return nil
     }
 
-    private func unescapeTemplatePlaceholders(in markdown: String) -> String {
-        guard let regex = Self.placeholderRegex else {
-            return markdown
-        }
-        let range = NSRange(markdown.startIndex..<markdown.endIndex, in: markdown)
-        let matches = regex.matches(in: markdown, options: [], range: range)
-        if matches.isEmpty {
-            return markdown
+    func unescapeTemplatePlaceholders(in markdown: String) -> String {
+        var result = markdown
+
+        if let regex = Self.placeholderRegex {
+            let range = NSRange(result.startIndex..<result.endIndex, in: result)
+            let matches = regex.matches(in: result, options: [], range: range)
+            for match in matches.reversed() {
+                guard let matchRange = Range(match.range, in: result) else {
+                    continue
+                }
+                let segment = String(result[matchRange])
+                let unescaped = segment.replacingOccurrences(of: "\\_", with: "_")
+                result.replaceSubrange(matchRange, with: unescaped)
+            }
         }
 
-        var result = markdown
-        for match in matches.reversed() {
-            guard let matchRange = Range(match.range, in: markdown) else {
-                continue
+        if let regex = Self.bracketPlaceholderRegex {
+            let range = NSRange(result.startIndex..<result.endIndex, in: result)
+            let matches = regex.matches(in: result, options: [], range: range)
+            for match in matches.reversed() {
+                guard let matchRange = Range(match.range, in: result) else {
+                    continue
+                }
+                let segment = String(result[matchRange])
+                let unescaped = segment
+                    .replacingOccurrences(of: "\\[", with: "[")
+                    .replacingOccurrences(of: "\\]", with: "]")
+                result.replaceSubrange(matchRange, with: unescaped)
             }
-            let segment = String(markdown[matchRange])
-            let unescaped = segment.replacingOccurrences(of: "\\_", with: "_")
-            result.replaceSubrange(matchRange, with: unescaped)
         }
 
         return result

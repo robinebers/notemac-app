@@ -118,4 +118,28 @@ struct NoteMacTextViewTests {
         #expect(textView.lastInsertedText == "X")
         #expect(textView.lastReplacementRange == NSRange(location: 0, length: 0))
     }
+
+    @Test("Clamps replacement range when content changes during async paste")
+    @MainActor
+    func clampsReplacementRangeWhenContentChangesDuringAsyncPaste() async {
+        let converter = StubPasteConverter(delayNanoseconds: 50_000_000, markdown: "X")
+        let textView = InsertTrackingTextView(
+            frame: NSRect(x: 0, y: 0, width: 100, height: 100),
+            pasteConverter: converter
+        )
+        textView.string = "ABCDEFG"
+        textView.setSelectedRange(NSRange(location: 6, length: 0))
+
+        textView.paste(nil)
+        textView.string = "AB"
+        for _ in 0..<25 {
+            if textView.lastInsertedText != nil {
+                break
+            }
+            try? await Task.sleep(nanoseconds: 20_000_000)
+        }
+
+        #expect(textView.lastInsertedText == "X")
+        #expect(textView.lastReplacementRange == NSRange(location: 2, length: 0))
+    }
 }

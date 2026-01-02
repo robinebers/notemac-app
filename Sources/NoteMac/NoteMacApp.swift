@@ -1,8 +1,8 @@
 import SwiftUI
 import AppKit
 
-// App version constant
-let appVersion = "0.11"
+// App version derived from Info.plist
+let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
 
 // MARK: - AppDelegate for proper macOS app activation
 

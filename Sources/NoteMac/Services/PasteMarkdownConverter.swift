@@ -9,6 +9,11 @@ protocol MarkdownConverting {
 extension Demark: MarkdownConverting {}
 
 @MainActor
+protocol PasteConverting {
+    func markdownString(from pasteboard: NSPasteboard) async -> String?
+}
+
+@MainActor
 final class PasteMarkdownConverter {
     private let demark: any MarkdownConverting
     private let options: DemarkOptions
@@ -130,3 +135,5 @@ final class PasteMarkdownConverter {
         return String(data: htmlData, encoding: .utf8)
     }
 }
+
+extension PasteMarkdownConverter: PasteConverting {}

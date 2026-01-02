@@ -45,7 +45,7 @@ class NoteMacTextView: STTextView {
 
         Task { @MainActor in
             if let markdown = await pasteConverter.markdownString(from: pasteboard) {
-                insertText(markdown, replacementRange: replacementRange)
+                insertText(markdown, replacementRange: clampedReplacementRange(replacementRange))
             } else {
                 pasteFallback(sender, replacementRange: replacementRange)
             }
@@ -54,7 +54,19 @@ class NoteMacTextView: STTextView {
 
     @MainActor
     func pasteFallback(_ sender: Any?, replacementRange: NSRange) {
-        setSelectedRange(replacementRange)
+        setSelectedRange(clampedReplacementRange(replacementRange))
         super.paste(sender)
+    }
+
+    @MainActor
+    private func clampedReplacementRange(_ range: NSRange) -> NSRange {
+        let length = (string as NSString).length
+        guard range.location != NSNotFound else {
+            return NSRange(location: length, length: 0)
+        }
+        let clampedLocation = min(max(range.location, 0), length)
+        let maxLength = max(0, length - clampedLocation)
+        let clampedLength = min(max(range.length, 0), maxLength)
+        return NSRange(location: clampedLocation, length: clampedLength)
     }
 }

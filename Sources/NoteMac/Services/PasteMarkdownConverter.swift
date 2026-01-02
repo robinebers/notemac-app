@@ -5,9 +5,9 @@ import Demark
 final class PasteMarkdownConverter {
     private let demark: Demark
     private let options: DemarkOptions
-    private static let structuralTagRegex = try? NSRegularExpression(
-        pattern: "<\\s*(ul|ol|li|code|pre|blockquote|a|img|table|thead|tbody|tr|td|th|hr)\\b",
-        options: [.caseInsensitive]
+    private static let placeholderRegex = try? NSRegularExpression(
+        pattern: "\\{\\{[^\\}]*\\}\\}",
+        options: []
     )
 
     init(
@@ -27,35 +27,41 @@ final class PasteMarkdownConverter {
     }
 
     func markdownString(from pasteboard: NSPasteboard) async -> String? {
-        let plain = pasteboard.string(forType: .string)
-
         if let html = htmlString(from: pasteboard) {
-            if let plain, !containsMarkdownStructure(in: html) {
-                return plain
-            }
-
             if let markdown = try? await convertHTMLToMarkdown(html),
                !markdown.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                return markdown
+                return unescapeTemplatePlaceholders(in: markdown)
             }
         }
 
-        if let plain {
+        if let plain = pasteboard.string(forType: .string) {
             return plain
         }
 
         return nil
     }
 
-    private func containsMarkdownStructure(in html: String) -> Bool {
-        let range = NSRange(html.startIndex..<html.endIndex, in: html)
-
-        if let regex = Self.structuralTagRegex,
-           regex.firstMatch(in: html, options: [], range: range) != nil {
-            return true
+    private func unescapeTemplatePlaceholders(in markdown: String) -> String {
+        guard let regex = Self.placeholderRegex else {
+            return markdown
+        }
+        let range = NSRange(markdown.startIndex..<markdown.endIndex, in: markdown)
+        let matches = regex.matches(in: markdown, options: [], range: range)
+        if matches.isEmpty {
+            return markdown
         }
 
-        return false
+        var result = markdown
+        for match in matches.reversed() {
+            guard let matchRange = Range(match.range, in: markdown) else {
+                continue
+            }
+            let segment = String(markdown[matchRange])
+            let unescaped = segment.replacingOccurrences(of: "\\_", with: "_")
+            result.replaceSubrange(matchRange, with: unescaped)
+        }
+
+        return result
     }
 
     private func htmlString(from pasteboard: NSPasteboard) -> String? {

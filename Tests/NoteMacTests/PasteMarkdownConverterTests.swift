@@ -22,30 +22,23 @@ struct PasteMarkdownConverterTests {
         #expect(markdown.contains("- One"))
     }
 
-    @Test("Prefers plain text when HTML has no formatting")
+    @Test("Preserves underscore placeholders in pasted markdown")
     @MainActor
-    func prefersPlainTextWhenHTMLIsPlain() async throws {
+    func preservesPlaceholderUnderscores() async throws {
         let converter = PasteMarkdownConverter()
         let pasteboard = NSPasteboard(name: NSPasteboard.Name("TestPasteboard-\(UUID().uuidString)"))
-        let plain = """
-        Hey {{first_name}},
-        You just did something most people never will.
-        Most people will watch another tutorial. Read another blog post. Buy another tool they'll never use. They'll spend the next 12 months \"learning\" while shipping exactly nothing.
-        Not you. You decided to actually build something.
-        """
         let html = """
         <p>Hey {{first_name}},</p>
-        <p>You just did something most people never will.</p>
-        <p>Most people will watch another tutorial. Read another blog post. Buy another tool they'll never use. They'll spend the next 12 months &quot;learning&quot; while shipping exactly nothing.</p>
-        <p>Not you. You decided to actually build something.</p>
+        <h2>Opus Isn't &quot;The Best&quot;</h2>
+        <p><em>Alien Tech</em></p>
         """
 
         pasteboard.clearContents()
-        pasteboard.setString(plain, forType: .string)
         pasteboard.setString(html, forType: .html)
 
         let markdown = await converter.markdownString(from: pasteboard)
 
-        #expect(markdown == plain)
+        #expect(markdown?.contains("{{first_name}}") == true)
+        #expect(markdown?.contains("{{first\\_name}}") == false)
     }
 }

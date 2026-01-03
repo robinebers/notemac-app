@@ -4,6 +4,8 @@ import UniformTypeIdentifiers
 struct Sidebar: View {
     @Bindable var appState: AppState
     @State private var draggedDocumentID: UUID?
+    @State private var renameCoordinator = InlineRenameCoordinator()
+    @FocusState private var renameFieldFocusedID: UUID?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -14,11 +16,35 @@ struct Sidebar: View {
                         document: doc,
                         isActive: doc.id == appState.activeDocumentID,
                         canRename: doc.filePath != nil,
+                        isEditing: renameCoordinator.isEditing(id: doc.id),
+                        draftName: $renameCoordinator.draftName,
+                        focusedFieldID: $renameFieldFocusedID,
                         onSelect: {
+                            renameCoordinator.handleSelectionChange(to: doc.id)
+                            if renameCoordinator.editingDocumentID == nil {
+                                renameFieldFocusedID = nil
+                            }
                             appState.setActiveDocument(id: doc.id)
                         },
-                        onRename: { newName in
-                            appState.renameDocument(id: doc.id, to: newName)
+                        onBeginRename: {
+                            renameCoordinator.beginEditing(id: doc.id, currentName: doc.title)
+                            renameFieldFocusedID = doc.id
+                        },
+                        onCommitRename: {
+                            if let newName = renameCoordinator.commit(for: doc.id) {
+                                appState.renameDocument(id: doc.id, to: newName)
+                            }
+                            renameFieldFocusedID = nil
+                        },
+                        onCancelRename: {
+                            renameCoordinator.cancel()
+                            renameFieldFocusedID = nil
+                        },
+                        onFocusChange: { isFocused in
+                            renameCoordinator.handleFocusChange(isFocused: isFocused)
+                            if !isFocused {
+                                renameFieldFocusedID = nil
+                            }
                         },
                         onClose: {
                             appState.closeDocument(id: doc.id)
@@ -66,14 +92,18 @@ struct SidebarRow: View {
     let document: Document
     let isActive: Bool
     let canRename: Bool
+    let isEditing: Bool
+    @Binding var draftName: String
+    @FocusState.Binding var focusedFieldID: UUID?
     let onSelect: () -> Void
-    let onRename: (String) -> Void
+    let onBeginRename: () -> Void
+    let onCommitRename: () -> Void
+    let onCancelRename: () -> Void
+    let onFocusChange: (Bool) -> Void
     let onClose: () -> Void
 
     @State private var isHovering = false
     @State private var isHoveringIndicator = false
-    @State private var renameState = InlineRenameState()
-    @FocusState private var isNameFieldFocused: Bool
 
     var body: some View {
         HStack(spacing: 8) {
@@ -85,19 +115,22 @@ struct SidebarRow: View {
 
             // Document title
             Group {
-                if renameState.isEditing {
-                    TextField("", text: $renameState.draftName)
+                if isEditing {
+                    TextField("", text: $draftName)
                         .textFieldStyle(.plain)
-                        .focused($isNameFieldFocused)
-                        .onSubmit { commitRename() }
-                        .onExitCommand { cancelRename() }
+                        .focused($focusedFieldID, equals: document.id)
+                        .onSubmit { onCommitRename() }
+                        .onExitCommand { onCancelRename() }
+                        .onChange(of: focusedFieldID) { _, newValue in
+                            onFocusChange(newValue == document.id)
+                        }
                 } else {
                     Text(document.title)
                         .lineLimit(1)
                         .truncationMode(.middle)
                         .onTapGesture(count: 2) {
                             guard canRename else { return }
-                            beginRename()
+                            onBeginRename()
                         }
                 }
             }
@@ -144,24 +177,6 @@ struct SidebarRow: View {
         .onHover { hovering in
             isHovering = hovering
         }
-    }
-
-    private func beginRename() {
-        renameState.beginEditing(with: document.title)
-        isNameFieldFocused = true
-    }
-
-    private func commitRename() {
-        let result = renameState.commit()
-        isNameFieldFocused = false
-        if let result {
-            onRename(result)
-        }
-    }
-
-    private func cancelRename() {
-        renameState.cancel()
-        isNameFieldFocused = false
     }
 }
 

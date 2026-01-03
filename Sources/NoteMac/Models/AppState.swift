@@ -40,6 +40,49 @@ final class AppState {
         self.showReplaceField = false
     }
 
+    static func defaultMarkdownFilename(_ name: String) -> String {
+        let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return "Untitled.md" }
+        let url = URL(fileURLWithPath: trimmed)
+        if url.pathExtension.isEmpty {
+            return trimmed + ".md"
+        }
+        return trimmed
+    }
+
+    static func urlByAppendingMarkdownExtensionIfNeeded(_ url: URL) -> URL {
+        if url.pathExtension.isEmpty {
+            return url.appendingPathExtension("md")
+        }
+        return url
+    }
+
+    static func renameCollisionExists(currentURL: URL, proposedName: String) -> Bool {
+        let trimmed = proposedName.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return false }
+        let finalName = defaultMarkdownFilename(trimmed)
+        let newURL = currentURL.deletingLastPathComponent().appendingPathComponent(finalName)
+        guard newURL != currentURL else { return false }
+        guard FileManager.default.fileExists(atPath: newURL.path) else { return false }
+        if isSameFile(currentURL, newURL) {
+            return false
+        }
+        return true
+    }
+
+    private static func isSameFile(_ lhs: URL, _ rhs: URL) -> Bool {
+        do {
+            let lhsID = try lhs.resourceValues(forKeys: [.fileResourceIdentifierKey]).fileResourceIdentifier
+            let rhsID = try rhs.resourceValues(forKeys: [.fileResourceIdentifierKey]).fileResourceIdentifier
+            if let lhsID, let rhsID {
+                return (lhsID as AnyObject).isEqual(rhsID)
+            }
+        } catch {
+            return false
+        }
+        return false
+    }
+
     /// Restore AppState from SessionData
     /// Attempts to reload files from disk, falling back to stored content
     static func restore(from sessionData: SessionData) -> AppState {
@@ -207,7 +250,7 @@ final class AppState {
                     // Need Save As for untitled document
                     let panel = NSSavePanel()
                     panel.allowedContentTypes = [.plainText]
-                    panel.nameFieldStringValue = doc.title
+                    panel.nameFieldStringValue = AppState.defaultMarkdownFilename(doc.title)
                     panel.canCreateDirectories = true
 
                     let saveResponse = panel.runModal()
@@ -216,8 +259,9 @@ final class AppState {
                     }
 
                     do {
-                        try FileService.save(content: doc.content, to: url)
-                        doc.filePath = url
+                        let normalizedURL = AppState.urlByAppendingMarkdownExtensionIfNeeded(url)
+                        try FileService.save(content: doc.content, to: normalizedURL)
+                        doc.filePath = normalizedURL
                         doc.markSaved()
                     } catch {
                         showError(message: "Failed to save: \(error.localizedDescription)")
@@ -263,6 +307,32 @@ final class AppState {
     }
 
     // MARK: - File Operations
+
+    /// Rename a saved document on disk and update its file path.
+    @MainActor
+    func renameDocument(id: UUID, to proposedName: String) {
+        guard let doc = documents.first(where: { $0.id == id }),
+              let filePath = doc.filePath else { return }
+
+        let trimmed = proposedName.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+
+        let finalName = AppState.defaultMarkdownFilename(trimmed)
+        let newURL = filePath.deletingLastPathComponent().appendingPathComponent(finalName)
+        guard newURL != filePath else { return }
+
+        if AppState.renameCollisionExists(currentURL: filePath, proposedName: trimmed) {
+            showError(message: "A file named \"\(finalName)\" already exists")
+            return
+        }
+
+        do {
+            try FileManager.default.moveItem(at: filePath, to: newURL)
+            doc.filePath = newURL
+        } catch {
+            showError(message: "Failed to rename file: \(error.localizedDescription)")
+        }
+    }
 
     /// Open one or more files using NSOpenPanel
     @MainActor
@@ -312,15 +382,16 @@ final class AppState {
 
         let panel = NSSavePanel()
         panel.allowedContentTypes = [.plainText]
-        panel.nameFieldStringValue = doc.title
+        panel.nameFieldStringValue = AppState.defaultMarkdownFilename(doc.title)
         panel.canCreateDirectories = true
 
         panel.begin { [weak self] response in
             guard response == .OK, let url = panel.url else { return }
 
             do {
-                try FileService.save(content: doc.content, to: url)
-                doc.filePath = url
+                let normalizedURL = AppState.urlByAppendingMarkdownExtensionIfNeeded(url)
+                try FileService.save(content: doc.content, to: normalizedURL)
+                doc.filePath = normalizedURL
                 doc.markSaved()
                 // FileService always saves as UTF-8, update metadata to match
                 doc.encoding = .utf8

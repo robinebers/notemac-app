@@ -4,6 +4,14 @@ import Foundation
 
 @Suite("AppState Tests")
 struct AppStateTests {
+    func withTempDirectory(_ test: (URL) throws -> Void) throws {
+        let tempDirectory = FileManager.default.temporaryDirectory
+            .appendingPathComponent(UUID().uuidString, isDirectory: true)
+        try FileManager.default.createDirectory(at: tempDirectory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: tempDirectory) }
+        try test(tempDirectory)
+    }
+
     @Test("Starts with one empty document")
     func startsWithOneDocument() {
         let state = AppState()
@@ -66,5 +74,100 @@ struct AppStateTests {
         state.moveDocuments(from: IndexSet(integer: 0), to: 3)
 
         #expect(state.documents.map { $0.id } == [docB.id, docC.id, docA.id])
+    }
+
+    @Test("Default markdown filename appends .md when missing")
+    func defaultMarkdownFilenameAddsMd() {
+        #expect(AppState.defaultMarkdownFilename("Notes") == "Notes.md")
+    }
+
+    @Test("Default markdown filename keeps existing extension")
+    func defaultMarkdownFilenameKeepsExtension() {
+        #expect(AppState.defaultMarkdownFilename("Notes.txt") == "Notes.txt")
+    }
+
+    @Test("Default markdown filename trims whitespace")
+    func defaultMarkdownFilenameTrimsWhitespace() {
+        #expect(AppState.defaultMarkdownFilename("  Notes  ") == "Notes.md")
+    }
+
+    @Test("URL helper appends .md when missing")
+    func urlHelperAppendsMarkdownExtension() {
+        let url = URL(fileURLWithPath: "/tmp/Notes")
+        #expect(AppState.urlByAppendingMarkdownExtensionIfNeeded(url).pathExtension == "md")
+    }
+
+    @Test("Rename saved document updates file and path")
+    @MainActor
+    func renameSavedDocumentUpdatesFile() throws {
+        try withTempDirectory { tempDirectory in
+            let originalURL = tempDirectory.appendingPathComponent("Old.md")
+            try "Hello".write(to: originalURL, atomically: true, encoding: .utf8)
+
+            let doc = Document(content: "Hello", filePath: originalURL)
+            doc.markSaved()
+            let state = AppState()
+            state.documents = [doc]
+            state.activeDocumentID = doc.id
+
+            state.renameDocument(id: doc.id, to: "New")
+
+            let newURL = tempDirectory.appendingPathComponent("New.md")
+            #expect(FileManager.default.fileExists(atPath: newURL.path))
+            #expect(!FileManager.default.fileExists(atPath: originalURL.path))
+            #expect(doc.filePath == newURL)
+        }
+    }
+
+    @Test("Rename ignores empty names")
+    @MainActor
+    func renameIgnoresEmptyName() throws {
+        try withTempDirectory { tempDirectory in
+            let originalURL = tempDirectory.appendingPathComponent("Old.md")
+            try "Hello".write(to: originalURL, atomically: true, encoding: .utf8)
+
+            let doc = Document(content: "Hello", filePath: originalURL)
+            doc.markSaved()
+            let state = AppState()
+            state.documents = [doc]
+            state.activeDocumentID = doc.id
+
+            state.renameDocument(id: doc.id, to: "   ")
+
+            #expect(FileManager.default.fileExists(atPath: originalURL.path))
+            #expect(doc.filePath == originalURL)
+        }
+    }
+
+    @Test("Detects rename collision when destination exists")
+    func renameCollisionDetected() throws {
+        try withTempDirectory { tempDirectory in
+            let currentURL = tempDirectory.appendingPathComponent("Current.md")
+            let existingURL = tempDirectory.appendingPathComponent("Existing.md")
+            try "Current".write(to: currentURL, atomically: true, encoding: .utf8)
+            try "Existing".write(to: existingURL, atomically: true, encoding: .utf8)
+
+            let collision = AppState.renameCollisionExists(
+                currentURL: currentURL,
+                proposedName: "Existing"
+            )
+
+            #expect(collision)
+        }
+    }
+
+    @Test("Case-only rename does not count as collision")
+    func caseOnlyRenameNotCollision() throws {
+        try withTempDirectory { tempDirectory in
+            let currentURL = tempDirectory.appendingPathComponent("Notes.md")
+            try "Notes".write(to: currentURL, atomically: true, encoding: .utf8)
+
+            let collision = AppState.renameCollisionExists(
+                currentURL: currentURL,
+                proposedName: "NOTES"
+            )
+
+            #expect(!collision)
+        }
     }
 }

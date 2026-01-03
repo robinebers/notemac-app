@@ -131,7 +131,8 @@ struct MainWindow: View {
                 StatusBar(
                     line: appState.activeDocument?.cursorLine ?? 1,
                     column: appState.activeDocument?.cursorColumn ?? 1,
-                    content: appState.activeDocument?.content ?? ""
+                    content: appState.activeDocument?.content ?? "",
+                    selectionRange: appState.activeDocument?.selectionRange ?? NSRange(location: 0, length: 0)
                 )
             }
         }

@@ -248,6 +248,7 @@ private struct EditorViewRepresentable: NSViewRepresentable {
             Task { @MainActor [weak self] in
                 guard let self else { return }
                 self.updateCursorPosition(from: textView)
+                self.document.selectionRange = textView.selectedRange()
             }
         }
 

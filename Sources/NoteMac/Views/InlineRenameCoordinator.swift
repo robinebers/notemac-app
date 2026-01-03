@@ -31,7 +31,8 @@ struct InlineRenameCoordinator {
         cancel()
     }
 
-    mutating func handleFocusChange(isFocused: Bool) {
+    mutating func handleFocusChange(id: UUID, isFocused: Bool) {
+        guard editingDocumentID == id else { return }
         if !isFocused {
             cancel()
         }

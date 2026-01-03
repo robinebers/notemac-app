@@ -85,9 +85,21 @@ struct InlineRenameCoordinatorTests {
         let idA = UUID()
         coordinator.beginEditing(id: idA, currentName: "Old.md")
 
-        coordinator.handleFocusChange(isFocused: false)
+        coordinator.handleFocusChange(id: idA, isFocused: false)
 
         #expect(coordinator.editingDocumentID == nil)
         #expect(coordinator.draftName.isEmpty)
+    }
+
+    @Test("Focus loss for another document does not cancel current edit")
+    func focusLossDifferentDocumentKeepsEdit() {
+        var coordinator = InlineRenameCoordinator()
+        let idA = UUID()
+        let idB = UUID()
+        coordinator.beginEditing(id: idB, currentName: "New.md")
+
+        coordinator.handleFocusChange(id: idA, isFocused: false)
+
+        #expect(coordinator.editingDocumentID == idB)
     }
 }

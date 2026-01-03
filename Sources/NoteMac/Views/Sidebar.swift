@@ -40,8 +40,8 @@ struct Sidebar: View {
                             renameCoordinator.cancel()
                             renameFieldFocusedID = nil
                         },
-                        onFocusChange: { isFocused in
-                            renameCoordinator.handleFocusChange(isFocused: isFocused)
+                        onFocusChange: { id, isFocused in
+                            renameCoordinator.handleFocusChange(id: id, isFocused: isFocused)
                             if !isFocused {
                                 renameFieldFocusedID = nil
                             }
@@ -99,7 +99,7 @@ struct SidebarRow: View {
     let onBeginRename: () -> Void
     let onCommitRename: () -> Void
     let onCancelRename: () -> Void
-    let onFocusChange: (Bool) -> Void
+    let onFocusChange: (UUID, Bool) -> Void
     let onClose: () -> Void
 
     @State private var isHovering = false
@@ -122,7 +122,7 @@ struct SidebarRow: View {
                         .onSubmit { onCommitRename() }
                         .onExitCommand { onCancelRename() }
                         .onChange(of: focusedFieldID) { _, newValue in
-                            onFocusChange(newValue == document.id)
+                            onFocusChange(document.id, newValue == document.id)
                         }
                 } else {
                     Text(document.title)

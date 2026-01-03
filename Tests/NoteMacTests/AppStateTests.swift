@@ -4,6 +4,14 @@ import Foundation
 
 @Suite("AppState Tests")
 struct AppStateTests {
+    func withTempDirectory(_ test: (URL) throws -> Void) throws {
+        let tempDirectory = FileManager.default.temporaryDirectory
+            .appendingPathComponent(UUID().uuidString, isDirectory: true)
+        try FileManager.default.createDirectory(at: tempDirectory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: tempDirectory) }
+        try test(tempDirectory)
+    }
+
     @Test("Starts with one empty document")
     func startsWithOneDocument() {
         let state = AppState()
@@ -87,5 +95,47 @@ struct AppStateTests {
     func urlHelperAppendsMarkdownExtension() {
         let url = URL(fileURLWithPath: "/tmp/Notes")
         #expect(AppState.urlByAppendingMarkdownExtensionIfNeeded(url).pathExtension == "md")
+    }
+
+    @Test("Rename saved document updates file and path")
+    @MainActor
+    func renameSavedDocumentUpdatesFile() throws {
+        try withTempDirectory { tempDirectory in
+            let originalURL = tempDirectory.appendingPathComponent("Old.md")
+            try "Hello".write(to: originalURL, atomically: true, encoding: .utf8)
+
+            let doc = Document(content: "Hello", filePath: originalURL)
+            doc.markSaved()
+            let state = AppState()
+            state.documents = [doc]
+            state.activeDocumentID = doc.id
+
+            state.renameDocument(id: doc.id, to: "New")
+
+            let newURL = tempDirectory.appendingPathComponent("New.md")
+            #expect(FileManager.default.fileExists(atPath: newURL.path))
+            #expect(!FileManager.default.fileExists(atPath: originalURL.path))
+            #expect(doc.filePath == newURL)
+        }
+    }
+
+    @Test("Rename ignores empty names")
+    @MainActor
+    func renameIgnoresEmptyName() throws {
+        try withTempDirectory { tempDirectory in
+            let originalURL = tempDirectory.appendingPathComponent("Old.md")
+            try "Hello".write(to: originalURL, atomically: true, encoding: .utf8)
+
+            let doc = Document(content: "Hello", filePath: originalURL)
+            doc.markSaved()
+            let state = AppState()
+            state.documents = [doc]
+            state.activeDocumentID = doc.id
+
+            state.renameDocument(id: doc.id, to: "   ")
+
+            #expect(FileManager.default.fileExists(atPath: originalURL.path))
+            #expect(doc.filePath == originalURL)
+        }
     }
 }

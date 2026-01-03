@@ -281,6 +281,27 @@ final class AppState {
 
     // MARK: - File Operations
 
+    /// Rename a saved document on disk and update its file path.
+    @MainActor
+    func renameDocument(id: UUID, to proposedName: String) {
+        guard let doc = documents.first(where: { $0.id == id }),
+              let filePath = doc.filePath else { return }
+
+        let trimmed = proposedName.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+
+        let finalName = AppState.defaultMarkdownFilename(trimmed)
+        let newURL = filePath.deletingLastPathComponent().appendingPathComponent(finalName)
+        guard newURL != filePath else { return }
+
+        do {
+            try FileManager.default.moveItem(at: filePath, to: newURL)
+            doc.filePath = newURL
+        } catch {
+            showError(message: "Failed to rename file: \(error.localizedDescription)")
+        }
+    }
+
     /// Open one or more files using NSOpenPanel
     @MainActor
     func openFile() {

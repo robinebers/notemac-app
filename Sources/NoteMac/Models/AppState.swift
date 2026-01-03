@@ -63,7 +63,24 @@ final class AppState {
         let finalName = defaultMarkdownFilename(trimmed)
         let newURL = currentURL.deletingLastPathComponent().appendingPathComponent(finalName)
         guard newURL != currentURL else { return false }
-        return FileManager.default.fileExists(atPath: newURL.path)
+        guard FileManager.default.fileExists(atPath: newURL.path) else { return false }
+        if isSameFile(currentURL, newURL) {
+            return false
+        }
+        return true
+    }
+
+    private static func isSameFile(_ lhs: URL, _ rhs: URL) -> Bool {
+        do {
+            let lhsID = try lhs.resourceValues(forKeys: [.fileResourceIdentifierKey]).fileResourceIdentifier
+            let rhsID = try rhs.resourceValues(forKeys: [.fileResourceIdentifierKey]).fileResourceIdentifier
+            if let lhsID, let rhsID {
+                return (lhsID as AnyObject).isEqual(rhsID)
+            }
+        } catch {
+            return false
+        }
+        return false
     }
 
     /// Restore AppState from SessionData

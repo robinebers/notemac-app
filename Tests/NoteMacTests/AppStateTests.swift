@@ -155,4 +155,19 @@ struct AppStateTests {
             #expect(collision)
         }
     }
+
+    @Test("Case-only rename does not count as collision")
+    func caseOnlyRenameNotCollision() throws {
+        try withTempDirectory { tempDirectory in
+            let currentURL = tempDirectory.appendingPathComponent("Notes.md")
+            try "Notes".write(to: currentURL, atomically: true, encoding: .utf8)
+
+            let collision = AppState.renameCollisionExists(
+                currentURL: currentURL,
+                proposedName: "NOTES"
+            )
+
+            #expect(!collision)
+        }
+    }
 }

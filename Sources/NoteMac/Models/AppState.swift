@@ -40,6 +40,23 @@ final class AppState {
         self.showReplaceField = false
     }
 
+    static func defaultMarkdownFilename(_ name: String) -> String {
+        let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return "Untitled.md" }
+        let url = URL(fileURLWithPath: trimmed)
+        if url.pathExtension.isEmpty {
+            return trimmed + ".md"
+        }
+        return trimmed
+    }
+
+    static func urlByAppendingMarkdownExtensionIfNeeded(_ url: URL) -> URL {
+        if url.pathExtension.isEmpty {
+            return url.appendingPathExtension("md")
+        }
+        return url
+    }
+
     /// Restore AppState from SessionData
     /// Attempts to reload files from disk, falling back to stored content
     static func restore(from sessionData: SessionData) -> AppState {

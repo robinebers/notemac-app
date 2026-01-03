@@ -67,4 +67,25 @@ struct AppStateTests {
 
         #expect(state.documents.map { $0.id } == [docB.id, docC.id, docA.id])
     }
+
+    @Test("Default markdown filename appends .md when missing")
+    func defaultMarkdownFilenameAddsMd() {
+        #expect(AppState.defaultMarkdownFilename("Notes") == "Notes.md")
+    }
+
+    @Test("Default markdown filename keeps existing extension")
+    func defaultMarkdownFilenameKeepsExtension() {
+        #expect(AppState.defaultMarkdownFilename("Notes.txt") == "Notes.txt")
+    }
+
+    @Test("Default markdown filename trims whitespace")
+    func defaultMarkdownFilenameTrimsWhitespace() {
+        #expect(AppState.defaultMarkdownFilename("  Notes  ") == "Notes.md")
+    }
+
+    @Test("URL helper appends .md when missing")
+    func urlHelperAppendsMarkdownExtension() {
+        let url = URL(fileURLWithPath: "/tmp/Notes")
+        #expect(AppState.urlByAppendingMarkdownExtensionIfNeeded(url).pathExtension == "md")
+    }
 }

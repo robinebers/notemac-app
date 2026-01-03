@@ -224,7 +224,7 @@ final class AppState {
                     // Need Save As for untitled document
                     let panel = NSSavePanel()
                     panel.allowedContentTypes = [.plainText]
-                    panel.nameFieldStringValue = doc.title
+                    panel.nameFieldStringValue = AppState.defaultMarkdownFilename(doc.title)
                     panel.canCreateDirectories = true
 
                     let saveResponse = panel.runModal()
@@ -233,8 +233,9 @@ final class AppState {
                     }
 
                     do {
-                        try FileService.save(content: doc.content, to: url)
-                        doc.filePath = url
+                        let normalizedURL = AppState.urlByAppendingMarkdownExtensionIfNeeded(url)
+                        try FileService.save(content: doc.content, to: normalizedURL)
+                        doc.filePath = normalizedURL
                         doc.markSaved()
                     } catch {
                         showError(message: "Failed to save: \(error.localizedDescription)")
@@ -350,15 +351,16 @@ final class AppState {
 
         let panel = NSSavePanel()
         panel.allowedContentTypes = [.plainText]
-        panel.nameFieldStringValue = doc.title
+        panel.nameFieldStringValue = AppState.defaultMarkdownFilename(doc.title)
         panel.canCreateDirectories = true
 
         panel.begin { [weak self] response in
             guard response == .OK, let url = panel.url else { return }
 
             do {
-                try FileService.save(content: doc.content, to: url)
-                doc.filePath = url
+                let normalizedURL = AppState.urlByAppendingMarkdownExtensionIfNeeded(url)
+                try FileService.save(content: doc.content, to: normalizedURL)
+                doc.filePath = normalizedURL
                 doc.markSaved()
                 // FileService always saves as UTF-8, update metadata to match
                 doc.encoding = .utf8

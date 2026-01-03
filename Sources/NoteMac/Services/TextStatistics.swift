@@ -14,4 +14,12 @@ enum TextStatistics {
         }
         return TextCounts(characters: characters, words: words)
     }
+
+    static func counts(in text: String, selectionRange: NSRange) -> TextCounts {
+        guard selectionRange.length > 0,
+              let range = Range(selectionRange, in: text) else {
+            return counts(in: text)
+        }
+        return counts(in: String(text[range]))
+    }
 }

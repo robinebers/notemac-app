@@ -39,6 +39,7 @@ final class Document: Identifiable {
 
     var cursorLine: Int
     var cursorColumn: Int
+    var selectionRange: NSRange
     var scrollPosition: CGFloat
     let createdAt: Date
     private(set) var lastModifiedAt: Date
@@ -63,6 +64,7 @@ final class Document: Identifiable {
         lineEnding: LineEnding = .lf,
         cursorLine: Int = 1,
         cursorColumn: Int = 1,
+        selectionRange: NSRange = NSRange(location: 0, length: 0),
         scrollPosition: CGFloat = 0,
         createdAt: Date? = nil,
         lastModifiedAt: Date? = nil
@@ -73,6 +75,7 @@ final class Document: Identifiable {
         self.filePath = filePath
         self.cursorLine = cursorLine
         self.cursorColumn = cursorColumn
+        self.selectionRange = selectionRange
         self.scrollPosition = scrollPosition
         self.createdAt = createdAt ?? Date()
         self.lastModifiedAt = lastModifiedAt ?? Date()

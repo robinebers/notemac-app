@@ -131,9 +131,8 @@ struct MainWindow: View {
                 StatusBar(
                     line: appState.activeDocument?.cursorLine ?? 1,
                     column: appState.activeDocument?.cursorColumn ?? 1,
-                    encoding: appState.activeDocument?.encodingName ?? "UTF-8",
-                    lineEnding: appState.activeDocument?.lineEnding.displayName ?? "LF",
-                    documentType: "Markdown"
+                    content: appState.activeDocument?.content ?? "",
+                    selectionRange: appState.activeDocument?.selectionRange ?? NSRange(location: 0, length: 0)
                 )
             }
         }

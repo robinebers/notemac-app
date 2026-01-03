@@ -57,6 +57,15 @@ final class AppState {
         return url
     }
 
+    static func renameCollisionExists(currentURL: URL, proposedName: String) -> Bool {
+        let trimmed = proposedName.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return false }
+        let finalName = defaultMarkdownFilename(trimmed)
+        let newURL = currentURL.deletingLastPathComponent().appendingPathComponent(finalName)
+        guard newURL != currentURL else { return false }
+        return FileManager.default.fileExists(atPath: newURL.path)
+    }
+
     /// Restore AppState from SessionData
     /// Attempts to reload files from disk, falling back to stored content
     static func restore(from sessionData: SessionData) -> AppState {
@@ -294,6 +303,11 @@ final class AppState {
         let finalName = AppState.defaultMarkdownFilename(trimmed)
         let newURL = filePath.deletingLastPathComponent().appendingPathComponent(finalName)
         guard newURL != filePath else { return }
+
+        if AppState.renameCollisionExists(currentURL: filePath, proposedName: trimmed) {
+            showError(message: "A file named \"\(finalName)\" already exists")
+            return
+        }
 
         do {
             try FileManager.default.moveItem(at: filePath, to: newURL)

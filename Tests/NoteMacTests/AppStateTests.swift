@@ -138,4 +138,21 @@ struct AppStateTests {
             #expect(doc.filePath == originalURL)
         }
     }
+
+    @Test("Detects rename collision when destination exists")
+    func renameCollisionDetected() throws {
+        try withTempDirectory { tempDirectory in
+            let currentURL = tempDirectory.appendingPathComponent("Current.md")
+            let existingURL = tempDirectory.appendingPathComponent("Existing.md")
+            try "Current".write(to: currentURL, atomically: true, encoding: .utf8)
+            try "Existing".write(to: existingURL, atomically: true, encoding: .utf8)
+
+            let collision = AppState.renameCollisionExists(
+                currentURL: currentURL,
+                proposedName: "Existing"
+            )
+
+            #expect(collision)
+        }
+    }
 }

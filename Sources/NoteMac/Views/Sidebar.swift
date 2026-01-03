@@ -13,8 +13,12 @@ struct Sidebar: View {
                     SidebarRow(
                         document: doc,
                         isActive: doc.id == appState.activeDocumentID,
+                        canRename: doc.filePath != nil,
                         onSelect: {
                             appState.setActiveDocument(id: doc.id)
+                        },
+                        onRename: { newName in
+                            appState.renameDocument(id: doc.id, to: newName)
                         },
                         onClose: {
                             appState.closeDocument(id: doc.id)
@@ -61,11 +65,15 @@ struct Sidebar: View {
 struct SidebarRow: View {
     let document: Document
     let isActive: Bool
+    let canRename: Bool
     let onSelect: () -> Void
+    let onRename: (String) -> Void
     let onClose: () -> Void
 
     @State private var isHovering = false
     @State private var isHoveringIndicator = false
+    @State private var renameState = InlineRenameState()
+    @FocusState private var isNameFieldFocused: Bool
 
     var body: some View {
         HStack(spacing: 8) {
@@ -76,10 +84,24 @@ struct SidebarRow: View {
                 .frame(width: 16)
 
             // Document title
-            Text(document.title)
-                .font(.system(size: 13))
-                .lineLimit(1)
-                .truncationMode(.middle)
+            Group {
+                if renameState.isEditing {
+                    TextField("", text: $renameState.draftName)
+                        .textFieldStyle(.plain)
+                        .focused($isNameFieldFocused)
+                        .onSubmit { commitRename() }
+                        .onExitCommand { cancelRename() }
+                } else {
+                    Text(document.title)
+                        .lineLimit(1)
+                        .truncationMode(.middle)
+                        .onTapGesture(count: 2) {
+                            guard canRename else { return }
+                            beginRename()
+                        }
+                }
+            }
+            .font(.system(size: 13))
 
             Spacer()
 
@@ -122,6 +144,24 @@ struct SidebarRow: View {
         .onHover { hovering in
             isHovering = hovering
         }
+    }
+
+    private func beginRename() {
+        renameState.beginEditing(with: document.title)
+        isNameFieldFocused = true
+    }
+
+    private func commitRename() {
+        let result = renameState.commit()
+        isNameFieldFocused = false
+        if let result {
+            onRename(result)
+        }
+    }
+
+    private func cancelRename() {
+        renameState.cancel()
+        isNameFieldFocused = false
     }
 }
 

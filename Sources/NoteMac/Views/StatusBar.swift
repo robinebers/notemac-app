@@ -8,8 +8,8 @@ struct StatusBar: View {
 
     @State private var charCount: Int = 0
     @State private var wordCount: Int = 0
-    @State private var debounceTask: Task<Void, Never>?
-    private static let debounceMilliseconds: UInt64 = 300
+    @State private var debouncer = DebouncedTask()
+    private static let debounceDelay = Duration.milliseconds(300)
 
     private var formattedCounts: String {
         TextStatisticsFormatter.format(
@@ -41,7 +41,7 @@ struct StatusBar: View {
             scheduleUpdate(for: content, selectionRange: newValue)
         }
         .onDisappear {
-            debounceTask?.cancel()
+            debouncer.cancel()
         }
     }
 
@@ -53,13 +53,7 @@ struct StatusBar: View {
     }
 
     private func scheduleUpdate(for text: String, selectionRange: NSRange) {
-        debounceTask?.cancel()
-        debounceTask = Task { @MainActor in
-            do {
-                try await Task.sleep(for: .milliseconds(Self.debounceMilliseconds))
-            } catch {
-                return
-            }
+        debouncer.schedule(after: Self.debounceDelay) { @MainActor in
             updateCounts(for: text, selectionRange: selectionRange)
         }
     }
